@@ -2,7 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* outline: 2px solid red; */
 }
+
 .container {
   width: 100%;
   display: flex;
@@ -11,10 +13,13 @@
   height: 700px;
   background-color: var(--background-color);
 }
+
 img {
   height: 700px;
-  width: 900px;
+  width: 100%;
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
 }
+
 .register-form {
   display: flex;
   align-items: center;
@@ -23,7 +28,9 @@ img {
   gap: 32px;
   height: 700px;
   width: 600px;
+  margin: 0 auto; /* Center the form */
 }
+
 input {
   padding: 12px;
   width: 300px;
@@ -32,21 +39,25 @@ input {
   transition: all;
   transition-duration: 500ms;
 }
+
 main div {
   display: flex;
   gap: 24px;
   align-items: center;
   text-align: center;
 }
+
 input:focus {
+  width: 400px; /* Increased width on focus */
   transition: all;
   transition-duration: 500ms;
-  width: 400px;
 }
+
 label {
   color: var(--text-color);
   font-weight: bold;
 }
+
 .footer {
   width: 100%;
   height: 100px;
@@ -57,6 +68,7 @@ label {
   font-size: larger;
   background-color: var(--text-color);
 }
+
 .btn {
   border: none;
   background-color: var(--accent-color);
@@ -66,18 +78,18 @@ label {
   color: white;
   font-weight: 700;
   cursor: pointer;
-  transition: all;
-  transition-duration: 500ms;
+  transition: all 0.5s ease;
 }
+
 .btn:hover {
-  transition: all;
-  transition-duration: 500ms;
   width: 150px;
   background-color: var(--text-color);
 }
+
 .btn:active {
   background-color: var(--primary-color);
 }
+
 .header {
   width: 100%;
   background-color: var(--text-color);
@@ -87,49 +99,179 @@ label {
   align-items: center;
   margin-bottom: 6px;
 }
+
 .sign-link {
   color: var(--text-color);
   background-color: var(--background-color);
   padding: 4px;
   border-radius: 8px;
-  transition: all;
-  transition-duration: 400ms;
+  transition: padding 0.4s ease;
 }
+
 .sign-link:hover {
-  transition: all;
-  transition-duration: 400ms;
   padding: 7px;
 }
+
 .header a {
   text-decoration: none;
 }
+
 .logo-img {
   width: 40px;
   height: 40px;
   border-radius: 20px;
 }
+
 .logo {
   color: white;
   margin-left: 8px;
   font-size: x-large;
   font-weight: bold;
 }
+
 .logo span {
   color: rgb(70, 137, 195);
 }
+
 .welcome {
   color: var(--text-color);
 }
+
 .form-group-email {
   display: flex;
   align-items: center;
   gap: 48px;
 }
+
 .logo-group {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
+
 .error {
   border: 1px var(--error-color) solid;
+}
+
+.input-error {
+  color: var(--error-color);
+  background-color: var(--error-slate);
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.err-hide {
+  display: none;
+}
+/* ===== Responsive Media Queries ===== */
+
+/* Mobile (up to 480px) */
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    height: auto; /* Allow content to wrap */
+    text-align: center;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .register-form {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    gap: 16px;
+  }
+
+  input {
+    width: 80%; /* Make input fields smaller */
+  }
+
+  .btn {
+    width: 80%;
+    padding: 12px;
+  }
+
+  .footer {
+    font-size: medium;
+  }
+
+  .header {
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+  }
+
+  .logo-img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Tablet (up to 768px) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .register-form {
+    width: 80%;
+    gap: 24px;
+  }
+
+  input {
+    width: 80%; /* Increase input field size */
+  }
+
+  .btn {
+    width: 150px;
+  }
+
+  .header {
+    flex-direction: column;
+    height: auto;
+  }
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+    height: 700px;
+  }
+
+  img {
+    width: 100%;
+    height: 700px;
+  }
+
+  .register-form {
+    width: 600px;
+    gap: 32px;
+  }
+
+  input {
+    width: 300px; /* Set input width to a fixed size */
+  }
+
+  .btn {
+    width: 120px;
+  }
+
+  .footer {
+    font-size: larger;
+  }
+
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

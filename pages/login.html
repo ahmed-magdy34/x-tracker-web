@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/assets/styles/auth.css" />
   </head>
   <body>
-    <header>
+    <header class="head-container">
       <div class="header">
         <div class="logo-group">
           <img
@@ -37,6 +37,7 @@
             placeholder="email..."
             required
           />
+          <span id="email-error" class="input-error , err-hide" >valid email is required</span>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
@@ -47,6 +48,7 @@
             required
             placeholder="password..."
             />
+            <span id="password-error" class="input-error , err-hide"> Password is required</span>
           </div>
           <button class="btn" id="submit-btn">Submit</button>
         </section>
@@ -54,6 +56,7 @@
           <img
             src="../assets//images//DALL·E 2025-01-28 23.09.01 - A modern and minimalist design of an expense tracker app screen with the name 'X-Tracker' prominently displayed at the top. The interface features a c.webp"
             alt="image1"
+            class="img"
           />
         </section>
       </form>
