@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* outline: 2px solid red; */
+}
+body {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-color);
+  height: 60px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+.logo-txt {
+  color: white;
+  margin-left: 8px;
+  font-size: x-large;
+  font-weight: bold;
+}
+.logo-txt span {
+  color: rgb(70, 137, 195);
+}
+.nav-btn {
+  padding: 8px;
+  background-color: var(--background-color);
+  border: none;
+  border-radius: 20px;
+  color: var(--text-color);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all;
+  transition-duration: 500ms;
+}
+.nav-btn:hover {
+  padding: 4px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.footer {
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  color: white;
+  font-size: larger;
+  background-color: var(--text-color);
+}
+
+.table-wrapper {
+  max-height: 400px;
+  overflow-y: auto;
+  width: 50vw;
+}
+
+.content-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9em;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.content-table thead tr {
+  background-color: var(--text-color);
+  color: white;
+  font-weight: bold;
+}
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+.content-table tbody tr {
+  border-bottom: 1px solid black;
+}
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid var(--text-color);
+}
+
+.table-header {
+  font-weight: bold;
+  color: var(--text-color);
+  margin-top: 16px;
+}
+thead {
+  position: sticky;
+  top: 0;
+}
