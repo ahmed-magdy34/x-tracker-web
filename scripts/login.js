@@ -4,11 +4,12 @@ const password = document.getElementById("password");
 const button = document.getElementById("submit-btn");
 const passwordError = document.getElementById("password-error");
 const emailError = document.getElementById("email-error");
+const form = document.getElementById("log-form");
 //////////////////////////////////////////////////////
 const loginValues = {};
 ///////////////////////////////////////////////////////
 
-button.addEventListener("click", (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   let formIsValid = true;

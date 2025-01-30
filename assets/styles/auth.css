@@ -20,7 +20,7 @@ img {
   object-fit: cover; /* Ensures the image maintains aspect ratio */
 }
 
-.register-form {
+.form {
   display: flex;
   align-items: center;
   justify-content: center;

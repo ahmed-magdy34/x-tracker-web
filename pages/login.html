@@ -24,7 +24,7 @@
     <main class="container">
       <section>
 
-        <form class="register-form">
+        <form class="form" id="log-form">
           <div>
             <h1 class="welcome">Welcome Back!</h1>
           </div>
@@ -35,7 +35,6 @@
             name="email"
             id="email"
             placeholder="email..."
-            required
           />
           <span id="email-error" class="input-error , err-hide" >valid email is required</span>
         </div>
@@ -45,12 +44,11 @@
             type="password"
             name="password"
             id="password"
-            required
             placeholder="password..."
             />
             <span id="password-error" class="input-error , err-hide"> Password is required</span>
           </div>
-          <button class="btn" id="submit-btn">Submit</button>
+          <button class="btn" type="submit" id="submit-btn">Submit</button>
         </section>
         <section>
           <img

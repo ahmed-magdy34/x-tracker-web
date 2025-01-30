@@ -5,6 +5,7 @@ const lastName = document.getElementById("last-name");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const button = document.getElementById("submit-btn");
+const form = document.getElementById("reg-form");
 ////////////////////////////////////////////////////
 const emailError = document.getElementById("email-error");
 const passwordError = document.getElementById("password-error");
@@ -16,7 +17,7 @@ const registerValues = {};
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 /////////////////////////////////////////////////////
-button.addEventListener("click", (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   let formIsValid = true;
