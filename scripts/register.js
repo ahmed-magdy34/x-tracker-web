@@ -64,10 +64,10 @@ form.addEventListener("submit", (e) => {
   }
 
   if (formIsValid) {
-    registerValues.firstName = firstName.value;
-    registerValues.lastName = lastName.value;
-    registerValues.email = email.value;
-    registerValues.password = password.value;
+    registerValues.firstName = firstName.value.trim("");
+    registerValues.lastName = lastName.value.trim("");
+    registerValues.email = email.value.trim("");
+    registerValues.password = password.value.trim("");
 
     firstName.value = "";
     lastName.value = "";

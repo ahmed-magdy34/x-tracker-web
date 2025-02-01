@@ -33,8 +33,8 @@ form.addEventListener("submit", (e) => {
   }
 
   if (formIsValid) {
-    loginValues.email = email.value;
-    loginValues.password = password.value;
+    loginValues.email = email.value.trim("");
+    loginValues.password = password.value.trim("");
     email.value = "";
     password.value = "";
     console.log(loginValues);

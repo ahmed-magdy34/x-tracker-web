@@ -65,17 +65,6 @@ body {
   overflow: hidden;
 }
 
-.footer {
-  width: 100%;
-  height: 100px;
-  text-align: center;
-  padding: 12px;
-  font-weight: bold;
-  color: white;
-  font-size: larger;
-  background-color: var(--text-color);
-}
-
 .table-wrapper {
   max-height: 400px;
   overflow-y: auto;
@@ -116,4 +105,100 @@ body {
 thead {
   position: sticky;
   top: 0;
+}
+.section-cont {
+  display: flex;
+  justify-content: space-between;
+}
+.inner-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.summary-section {
+  background-color: var(--background-color);
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
+  padding: 30px;
+  border-radius: 300px;
+  color: var(--text-color);
+  font-weight: bold;
+}
+.icons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+.sum-elements {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.delete-icon {
+  cursor: pointer;
+  transition: all;
+  transition-duration: 500ms;
+}
+.delete-icon:hover {
+  transition: all;
+  transition-duration: 500ms;
+  color: red;
+}
+.edit-icon {
+  cursor: pointer;
+  transition: all;
+  transition-duration: 500ms;
+}
+.edit-icon:hover {
+  color: green;
+  transition: all;
+  transition-duration: 500ms;
+}
+.footer {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.footer-logo {
+  display: flex;
+  gap: 6px;
+}
+.footer img {
+  border-radius: 12px;
+  height: 24px;
+  width: 24px;
+}
+.mission {
+  margin-top: 8px;
+  text-align: left;
+}
+.mission ul {
+  list-style: none;
+}
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.footer p:hover {
+  color: orangered;
+  transition: all;
+  transition-duration: 500ms;
+  cursor: pointer;
+}
+.footer li:hover {
+  color: orangered;
+  transition: all;
+  transition-duration: 500ms;
+  cursor: pointer;
 }

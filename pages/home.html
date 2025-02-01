@@ -6,6 +6,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="/assets/styles/colors.css" />
     <link rel="stylesheet" href="/assets/styles/home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
   </head>
   <body>
     <header class="nav">
@@ -22,121 +26,76 @@
       </div>
     </header>
     <main class="container">
-      <section class="table-header">
-        <h1>Your Expenses</h1>
-      </section>
-      <section>
-        <div class="table-wrapper">
-          <table class="content-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Description</th>
-                <th>Date</th>
-                <th>Amount</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>bought laptop</td>
-                <td>12-24-2022</td>
-                <td>200$</td>
-                <td>edit/delete</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>bought laptop</td>
-                <td>12-24-2022</td>
-                <td>200$</td>
-                <td>edit/delete</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>bought laptop</td>
-                <td>12-24-2022</td>
-                <td>200$</td>
-                <td>edit/delete</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>bought laptop</td>
-                <td>12-24-2022</td>
-                <td>200$</td>
-                <td>edit/delete</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>bought laptop</td>
-                <td>12-24-2022</td>
-                <td>200$</td>
-                <td>edit/delete</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>bought laptop</td>
-                <td>12-24-2022</td>
-                <td>200$</td>
-                <td>edit/delete</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>bought laptop</td>
-                <td>12-24-2022</td>
-                <td>200$</td>
-                <td>edit/delete</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>bought laptop</td>
-                <td>12-24-2022</td>
-                <td>200$</td>
-                <td>edit/delete</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>bought laptop</td>
-                <td>12-24-2022</td>
-                <td>200$</td>
-                <td>edit/delete</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>bought laptop</td>
-                <td>12-24-2022</td>
-                <td>200$</td>
-                <td>edit/delete</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>bought laptop</td>
-                <td>12-24-2022</td>
-                <td>200$</td>
-                <td>edit/delete</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>bought laptop</td>
-                <td>12-24-2022</td>
-                <td>200$</td>
-                <td>edit/delete</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>bought laptop</td>
-                <td>12-24-2022</td>
-                <td>200$</td>
-                <td>edit/delete</td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- <section class="table-header">
+      </section> -->
+      <div class="inner-container">
+        <div class="section-cont">
+          <section>
+            <h1>Your Expenses</h1>
+            <div class="table-wrapper">
+              <table class="content-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+              </table>
+            </div>
+          </section>
         </div>
-      </section>
+        <section class="summary-section" id="summary-section">
+          <h1 id="summary">Summary</h1>
+        </section>
+      </div>
     </main>
 
     <footer class="footer">
-      <div>© 2020 Copyright:</div>
+      <div class="footer-container">
+        <div>
+          <div class="footer-logo">
+            <img
+              src="/assets/logo/6549528ae9f24d87beb1a90f3b3bf9ff-free.png"
+              alt="footer-logo"
+            />
+            <p>X-Tracker</p>
+          </div>
+          <div class="mission">
+            <ul>
+              <li><p>Our Mission :</p></li>
+              <li>Accssebility</li>
+              <li>Stability</li>
+              <li>Security</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h4>About Us:</h4>
+          <p>Lorem ipsum dolor sit amet consectetur</p>
+          <p>Lorem ipsum dolor sit amet consectetur</p>
+          <p>Lorem ipsum dolor sit amet consectetur</p>
+          <p>Lorem ipsum dolor sit amet consectetur</p>
+        </div>
+        <div>
+          <h4>Contact Us:</h4>
+          <p>Lorem ipsum</p>
+          <p>Lorem ipsum</p>
+          <p>Lorem ipsum</p>
+          <p>Lorem ipsum</p>
+        </div>
+        <div>
+          <h4>Support Us:</h4>
+          <p>Lorem ipsum</p>
+          <p>Lorem ipsum</p>
+          <p>Lorem ipsum</p>
+          <p>Lorem ipsum</p>
+        </div>
+      </div>
     </footer>
+    <script src="/scripts/home.js"></script>
   </body>
 </html>
