@@ -33,6 +33,7 @@ const summary = document.getElementById("summary-section");
 const closeButton = document.getElementById("close-btn");
 const tableBody = document.getElementById("table-body");
 const submitButton = document.getElementById("submit-btn");
+const editForm = document.getElementById("edit-form");
 /////////////////////////////helper variables////////////////////////////
 let expenseToEdit = {};
 /////////////////////////////////
@@ -46,25 +47,26 @@ const editExpense = (id) => {
   expenseToEdit = testArr.filter((el) => el.id === Number(id))[0];
   amountEditInput.value = expenseToEdit.amount;
   descriptionEditInput.value = expenseToEdit.description;
-  modalOverlay.classList.remove("visible");
-  editModal.classList.remove("visible");
+  modalOverlay.classList.remove("hidden");
+  editModal.classList.remove("hidden");
 };
 closeButton.addEventListener("click", (e) => {
   e.preventDefault();
-  modalOverlay.classList.add("visible");
-  editModal.classList.add("visible");
+  modalOverlay.classList.add("hidden");
+  editModal.classList.add("hidden");
+  console.log("clicked");
 });
-submitButton.addEventListener("click", (e) => {
+editForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const editedExpense = {
     id: expenseToEdit?.id,
     description: descriptionEditInput.value,
-    amount: amountEditInput.value,
+    amount: Number(amountEditInput.value),
     date: expenseToEdit?.date,
   };
-  modalOverlay.classList.add("visible");
-  editModal.classList.add("visible");
   console.log(editedExpense);
+  modalOverlay.classList.add("hidden");
+  editModal.classList.add("hidden");
 });
 
 /////////////////////table function////////////
@@ -106,7 +108,7 @@ const updateTable = () => {
 };
 /////////////////////////summary function/////////////////////
 const updateSummary = () => {
-  summary.innerHTML = "";
+  summary.innerHTML = "<h1>Summary</h1>";
   summary.insertAdjacentHTML(
     "beforeend",
     `

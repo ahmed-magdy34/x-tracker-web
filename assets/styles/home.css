@@ -222,7 +222,7 @@ thead {
   border-radius: 8px;
   z-index: 1000;
 }
-.visible {
+.hidden {
   display: none;
 }
 .modal-content {
