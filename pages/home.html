@@ -26,8 +26,6 @@
       </div>
     </header>
     <main class="container">
-      <!-- <section class="table-header">
-      </section> -->
       <div class="inner-container">
         <div class="section-cont">
           <section>
@@ -50,6 +48,24 @@
         </div>
         <section class="summary-section" id="summary-section">
           <h1 id="summary">Summary</h1>
+        </section>
+        <section class="edit-modal-overlay visible" id="edit-overlay">
+          <div class="edit-modal" id="edit-modal">
+            <form class="modal-content">
+              <div class="close-modal">
+                <button id="close-btn">X</button>
+              </div>
+              <div class="form-des">
+                <label for="description">Description</label>
+                <input type="text" id="description" />
+              </div>
+              <div class="form-amount">
+                <label for="amount">Amount</label>
+                <input type="number" id="amount" />
+              </div>
+              <button class="modal-submit" id="submit-btn">Submit</button>
+            </form>
+          </div>
         </section>
       </div>
     </main>
@@ -82,10 +98,10 @@
         </div>
         <div>
           <h4>Contact Us:</h4>
-          <p>Lorem ipsum</p>
-          <p>Lorem ipsum</p>
-          <p>Lorem ipsum</p>
-          <p>Lorem ipsum</p>
+          <p>+200987654</p>
+          <p>Facebook</p>
+          <p>ahmedmagdy334m@gmail.com</p>
+          <p>X.com</p>
         </div>
         <div>
           <h4>Support Us:</h4>

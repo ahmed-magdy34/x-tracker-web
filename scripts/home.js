@@ -23,39 +23,19 @@ let testArr = [
     date: Date.now(),
     amount: 600,
   },
-  {
-    id: 4,
-    description: "bought laptop",
-    date: Date.now(),
-    amount: 600,
-  },
-  {
-    id: 4,
-    description: "bought laptop",
-    date: Date.now(),
-    amount: 600,
-  },
-  {
-    id: 4,
-    description: "bought laptop",
-    date: Date.now(),
-    amount: 600,
-  },
-  {
-    id: 4,
-    description: "bought laptop",
-    date: Date.now(),
-    amount: 600,
-  },
-  {
-    id: 4,
-    description: "bought laptop",
-    date: Date.now(),
-    amount: 600,
-  },
 ];
-
+/////////////////////////dom selections/////////////////
+const descriptionEditInput = document.getElementById("description");
+const amountEditInput = document.getElementById("amount");
+const modalOverlay = document.getElementById("edit-overlay");
+const editModal = document.getElementById("edit-modal");
 const summary = document.getElementById("summary-section");
+const closeButton = document.getElementById("close-btn");
+const tableBody = document.getElementById("table-body");
+const submitButton = document.getElementById("submit-btn");
+/////////////////////////////helper variables////////////////////////////
+let expenseToEdit = {};
+/////////////////////////////////
 
 const deleteExpense = (id) => {
   testArr = testArr.filter((el) => el.id !== id);
@@ -63,12 +43,31 @@ const deleteExpense = (id) => {
   updateSummary();
 };
 const editExpense = (id) => {
-  let newThing = testArr.filter((el) => el.id === Number(id));
-  console.log(newThing);
+  expenseToEdit = testArr.filter((el) => el.id === Number(id))[0];
+  amountEditInput.value = expenseToEdit.amount;
+  descriptionEditInput.value = expenseToEdit.description;
+  modalOverlay.classList.remove("visible");
+  editModal.classList.remove("visible");
 };
+closeButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  modalOverlay.classList.add("visible");
+  editModal.classList.add("visible");
+});
+submitButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const editedExpense = {
+    id: expenseToEdit?.id,
+    description: descriptionEditInput.value,
+    amount: amountEditInput.value,
+    date: expenseToEdit?.date,
+  };
+  modalOverlay.classList.add("visible");
+  editModal.classList.add("visible");
+  console.log(editedExpense);
+});
 
-const tableBody = document.getElementById("table-body");
-
+/////////////////////table function////////////
 const updateTable = () => {
   tableBody.innerHTML = "";
   testArr.forEach((expense) => {
@@ -88,7 +87,7 @@ const updateTable = () => {
         </tr>`
     );
   });
-
+  ////////////////////////////////////////////////
   const deleteIcons = document.querySelectorAll(".fa-delete-left");
   deleteIcons.forEach((icon) => {
     const expenseId = icon.getAttribute("data-id");
@@ -96,6 +95,7 @@ const updateTable = () => {
       deleteExpense(Number(expenseId));
     });
   });
+  ////////////////////////////////////
   const editIcons = document.querySelectorAll(".fa-pen-to-square");
   editIcons.forEach((icon) => {
     const editId = icon.getAttribute("edit-id");
@@ -104,6 +104,7 @@ const updateTable = () => {
     });
   });
 };
+/////////////////////////summary function/////////////////////
 const updateSummary = () => {
   summary.innerHTML = "";
   summary.insertAdjacentHTML(
