@@ -278,3 +278,26 @@ thead {
   transition: all;
   transition-duration: 500ms;
 }
+.add-x {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.add-x button {
+  background: var(--primary-color);
+  color: white;
+  font-weight: 800;
+  font-size: large;
+  padding: 6px;
+  width: 430px;
+  margin-right: 75px;
+  border-radius: 120px;
+  cursor: pointer;
+  transition: all;
+  transition-duration: 500ms;
+}
+.add-x button:hover {
+  padding: 8px;
+  transition: all;
+  transition-duration: 500ms;
+}

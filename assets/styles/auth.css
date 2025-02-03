@@ -137,6 +137,8 @@ label {
   padding: 4px;
   border-radius: 8px;
   transition: padding 0.4s ease;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 .sign-link:hover {

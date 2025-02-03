@@ -6,6 +6,8 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const button = document.getElementById("submit-btn");
 const form = document.getElementById("reg-form");
+const toLoginButton = document.getElementById("link-btn");
+
 ////////////////////////////////////////////////////
 const emailError = document.getElementById("email-error");
 const passwordError = document.getElementById("password-error");
@@ -17,6 +19,9 @@ const registerValues = {};
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 /////////////////////////////////////////////////////
+toLoginButton.addEventListener("click", () => {
+  window.location.href = "login.html";
+});
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 

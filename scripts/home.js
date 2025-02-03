@@ -34,10 +34,13 @@ const closeButton = document.getElementById("close-btn");
 const tableBody = document.getElementById("table-body");
 const submitButton = document.getElementById("submit-btn");
 const editForm = document.getElementById("edit-form");
+const signOutButton = document.getElementById("sign-out");
 /////////////////////////////helper variables////////////////////////////
 let expenseToEdit = {};
 /////////////////////////////////
-
+signOutButton.addEventListener("click", () => {
+  window.location.href = "login.html";
+});
 const deleteExpense = (id) => {
   testArr = testArr.filter((el) => el.id !== id);
   updateTable();

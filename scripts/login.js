@@ -5,10 +5,14 @@ const button = document.getElementById("submit-btn");
 const passwordError = document.getElementById("password-error");
 const emailError = document.getElementById("email-error");
 const form = document.getElementById("log-form");
+const toLoginButton = document.getElementById("link-btn");
 //////////////////////////////////////////////////////
 const loginValues = {};
 ///////////////////////////////////////////////////////
 
+toLoginButton.addEventListener("click", () => {
+  window.location.href = "register.html";
+});
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -38,5 +42,6 @@ form.addEventListener("submit", (e) => {
     email.value = "";
     password.value = "";
     console.log(loginValues);
+    window.location.href = "home.html";
   }
 });
