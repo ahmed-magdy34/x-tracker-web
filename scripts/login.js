@@ -9,10 +9,8 @@ const toLoginButton = document.getElementById("link-btn");
 //////////////////////////////////////////////////////
 const loginValues = {};
 ///////////////////////////////////////////////////////
-
-toLoginButton.addEventListener("click", () => {
-  window.location.href = "register.html";
-});
+if (localStorage.getItem("authToken")) {
+}
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 

@@ -1,9 +1,11 @@
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   /* outline: 2px solid red; */
 }
+
 body {
   min-height: 100vh;
   width: 100%;
@@ -11,6 +13,8 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+
+/* Navigation Bar */
 .nav {
   display: flex;
   flex-direction: row;
@@ -21,26 +25,50 @@ body {
   padding-right: 8px;
   padding-left: 8px;
 }
+
 .logo {
   display: flex;
   align-items: center;
   gap: 6px;
   cursor: pointer;
 }
+
 .logo-img {
   width: 40px;
   height: 40px;
   border-radius: 20px;
 }
+
 .logo-txt {
   color: white;
   margin-left: 8px;
   font-size: x-large;
   font-weight: bold;
 }
+
 .logo-txt span {
   color: rgb(70, 137, 195);
 }
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-page {
+  text-decoration: none;
+  font-size: large;
+  color: white;
+  font-weight: bold;
+  transition: all 500ms;
+}
+
+.nav-page:hover {
+  color: coral;
+}
+
 .nav-btn {
   padding: 8px;
   background-color: var(--background-color);
@@ -49,12 +77,14 @@ body {
   color: var(--text-color);
   font-weight: 700;
   cursor: pointer;
-  transition: all;
-  transition-duration: 500ms;
+  transition: all 500ms;
 }
+
 .nav-btn:hover {
   padding: 4px;
 }
+
+/* Layout & Containers */
 .container {
   display: flex;
   flex-direction: column;
@@ -65,6 +95,21 @@ body {
   overflow: hidden;
 }
 
+.section-cont {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-left: 30px;
+  width: 100%;
+}
+
+/* Table & Content */
 .table-wrapper {
   max-height: 400px;
   overflow-y: auto;
@@ -85,14 +130,17 @@ body {
   color: white;
   font-weight: bold;
 }
+
 .content-table th,
 .content-table td {
   padding: 12px 15px;
   text-align: left;
 }
+
 .content-table tbody tr {
   border-bottom: 1px solid black;
 }
+
 .content-table tbody tr:last-of-type {
   border-bottom: 2px solid var(--text-color);
 }
@@ -102,65 +150,112 @@ body {
   color: var(--text-color);
   margin-top: 16px;
 }
+
 thead {
   position: sticky;
   top: 0;
 }
-.section-cont {
-  display: flex;
-  justify-content: space-between;
-}
-.inner-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-}
+
+/* Summary Section */
 .summary-section {
-  background-color: var(--background-color);
-  width: 30%;
+  background-color: var(--text-color);
+  width: 50vw;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 36px;
-  padding: 30px;
-  border-radius: 300px;
-  color: var(--text-color);
+  padding: 6px 20px;
+  color: white;
   font-weight: bold;
+  font-size: medium;
 }
+
+@media (max-width: 750px) {
+  .summary-section {
+    font-size: smaller;
+    padding: 0;
+    font-weight: 300;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sum-elements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .add-x {
+    font-weight: 300;
+    font-size: 6px;
+  }
+}
+
+/* Icons */
 .icons-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 24px;
 }
+
 .sum-elements {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 12px;
+  width: 70%;
+  justify-content: space-between;
 }
-.delete-icon {
-  cursor: pointer;
-  transition: all;
-  transition-duration: 500ms;
-}
-.delete-icon:hover {
-  transition: all;
-  transition-duration: 500ms;
-  color: red;
-}
+
+.delete-icon,
 .edit-icon {
   cursor: pointer;
-  transition: all;
-  transition-duration: 500ms;
+  transition: all 500ms;
 }
+
+.delete-icon:hover {
+  color: red;
+}
+
 .edit-icon:hover {
   color: green;
-  transition: all;
-  transition-duration: 500ms;
 }
+
+/* Buttons & Hover Effects */
+.add-x {
+  background: var(--background-color);
+  color: var(--text-color);
+  font-weight: 600;
+  padding: 3px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 500ms;
+  font-size: small;
+}
+
+.add-x:hover {
+  padding: 4px;
+}
+
+.modal-submit {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 6px;
+  width: 65px;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: all 500ms;
+  font-weight: bold;
+}
+
+.modal-submit:hover {
+  background-color: var(--text-color);
+  width: 90px;
+}
+
+/* Footer */
 .footer {
   background-color: var(--primary-color);
   color: #fff;
@@ -169,48 +264,50 @@ thead {
   font-size: 14px;
   line-height: 1.6;
 }
+
 .footer-logo {
   display: flex;
   gap: 6px;
 }
+
 .footer img {
   border-radius: 12px;
   height: 24px;
   width: 24px;
 }
+
 .mission {
   margin-top: 8px;
   text-align: left;
 }
+
 .mission ul {
   list-style: none;
 }
+
 .footer-container {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
-.footer p:hover {
-  color: orangered;
-  transition: all;
-  transition-duration: 500ms;
-  cursor: pointer;
-}
+
+.footer p:hover,
 .footer li:hover {
   color: orangered;
-  transition: all;
-  transition-duration: 500ms;
+  transition: all 500ms;
   cursor: pointer;
 }
+
 .edit-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Dark transparent overlay */
-  backdrop-filter: blur(5px); /* Apply blur effect */
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
 }
+
 .edit-modal {
   position: absolute;
   top: 50%;
@@ -222,9 +319,11 @@ thead {
   border-radius: 8px;
   z-index: 1000;
 }
+
 .hidden {
   display: none;
 }
+
 .modal-content {
   display: flex;
   flex-direction: column;
@@ -232,72 +331,85 @@ thead {
   align-items: center;
   gap: 24px;
 }
+
 .modal-content input {
   padding: 4px;
   border: none;
   background-color: var(--background-color);
   border-radius: 12px;
 }
+
 .close-modal {
   display: flex;
   justify-content: flex-end;
   width: 100%;
 }
+
 .close-modal button {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  transition: all;
-  transition-duration: 500ms;
+  transition: all 500ms;
 }
+
 .close-modal button:hover {
   font-size: 16px;
-  transition: all;
-  transition-duration: 500ms;
 }
-.form-amount {
+
+.err {
+  background-color: var(--error-slate);
+  padding: 4px;
+  color: var(--error-color);
+  border-radius: 12px;
+}
+
+.exp-head {
+  margin-bottom: 12px;
+}
+.add-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+.add-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 1000;
+}
+.add-modal-content {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 19px;
+  gap: 24px;
 }
-.modal-submit {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 6px;
-  width: 65px;
-  border-radius: 18px;
-  cursor: pointer;
-  transition: all;
-  transition-duration: 500ms;
-  font-weight: bold;
+.add-modal-content input {
+  padding: 4px;
+  border: none;
+  background-color: var(--background-color);
+  border-radius: 12px;
 }
-.modal-submit:hover {
-  background-color: var(--text-color);
-  width: 90px;
-  transition: all;
-  transition-duration: 500ms;
-}
-.add-x {
-  width: 100%;
+.close-add-modal {
   display: flex;
   justify-content: flex-end;
+  width: 100%;
 }
-.add-x button {
-  background: var(--primary-color);
-  color: white;
-  font-weight: 800;
-  font-size: large;
-  padding: 6px;
-  width: 430px;
-  margin-right: 75px;
-  border-radius: 120px;
+.close-add-modal button {
+  background-color: transparent;
+  border: none;
   cursor: pointer;
-  transition: all;
-  transition-duration: 500ms;
+  transition: all 500ms;
 }
-.add-x button:hover {
-  padding: 8px;
-  transition: all;
-  transition-duration: 500ms;
+.close-add-modal button:hover {
+  font-size: 16px;
 }

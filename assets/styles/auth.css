@@ -11,10 +11,14 @@
   align-items: center;
   justify-content: space-between;
   height: 700px;
-  background-color: var(--background-color);
+  background-color: var(--text-color);
+  /* background-image: url("/assets/images/Leonardo_Phoenix_10_Twopart_PNG_for_a_web_app_focusing_on_expe_2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
 
-img {
+.img {
   height: 700px;
   width: 100%;
   object-fit: cover; /* Ensures the image maintains aspect ratio */
@@ -27,8 +31,12 @@ img {
   flex-direction: column;
   gap: 32px;
   height: 700px;
-  width: 600px;
+  width: 50vw;
   margin: 0 auto; /* Center the form */
+  background-color: white;
+  /* float: right; */
+  border-bottom-left-radius: 100px;
+  border-top-left-radius: 100px;
 }
 
 input {
@@ -38,6 +46,7 @@ input {
   border: none;
   transition: all;
   transition-duration: 500ms;
+  background-color: var(--background-color);
 }
 
 main div {
@@ -58,51 +67,9 @@ label {
   font-weight: bold;
 }
 
-.footer {
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 15px;
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.6;
-}
-.footer-logo {
-  display: flex;
-  gap: 6px;
-}
-.footer img {
-  border-radius: 12px;
-  height: 24px;
-  width: 24px;
-}
-.mission {
-  margin-top: 8px;
-  text-align: left;
-}
-.mission ul {
-  list-style: none;
-}
-.footer-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.footer p:hover {
-  color: orangered;
-  transition: all;
-  transition-duration: 500ms;
-  cursor: pointer;
-}
-.footer li:hover {
-  color: orangered;
-  transition: all;
-  transition-duration: 500ms;
-  cursor: pointer;
-}
-
 .btn {
   border: none;
-  background-color: var(--accent-color);
+  background-color: var(--primary-color);
   padding: 16px;
   width: 120px;
   border-radius: 60px;
@@ -121,34 +88,6 @@ label {
   background-color: var(--primary-color);
 }
 
-.header {
-  width: 100%;
-  background-color: var(--primary-color);
-  display: flex;
-  justify-content: space-between;
-  height: 62px;
-  align-items: center;
-  margin-bottom: 6px;
-}
-
-.sign-link {
-  color: var(--text-color);
-  background-color: var(--background-color);
-  padding: 4px;
-  border-radius: 8px;
-  transition: padding 0.4s ease;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.sign-link:hover {
-  padding: 7px;
-}
-
-.header a {
-  text-decoration: none;
-}
-
 .logo-img {
   width: 40px;
   height: 40px;
@@ -156,8 +95,7 @@ label {
 }
 
 .logo {
-  color: white;
-  margin-left: 8px;
+  color: var(--text-color);
   font-size: x-large;
   font-weight: bold;
 }
@@ -196,24 +134,33 @@ label {
 .err-hide {
   display: none;
 }
-
+.dir-link {
+  color: var(--text-color);
+  font-weight: 800;
+}
+.dir-link a {
+  text-decoration: none;
+}
 @media (max-width: 480px) {
-  .container {
+  /* .container {
     flex-direction: column;
     height: auto;
     text-align: center;
+  } */
+  .form {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    width: 100vw;
+    height: 100vh;
   }
-
+  input:focus {
+    width: 80%;
+  }
+  .image-section {
+    visibility: hidden;
+  }
   img {
-    width: 100%;
-    height: auto;
-  }
-
-  .register-form {
-    width: 100%;
-    height: auto;
-    padding: 20px;
-    gap: 16px;
+    visibility: hidden;
   }
 
   input {
@@ -223,16 +170,6 @@ label {
   .btn {
     width: 80%;
     padding: 12px;
-  }
-
-  .footer {
-    font-size: medium;
-  }
-
-  .header {
-    flex-direction: column;
-    justify-content: center;
-    height: auto;
   }
 
   .logo-img {
@@ -248,16 +185,22 @@ label {
   }
 
   img {
-    width: 100%;
-    height: auto;
+    /* width: 100%;
+    height: auto; */
+    visibility: hidden;
   }
 
-  .register-form {
-    width: 80%;
-    gap: 24px;
+  .form {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    width: 100vw;
+    height: 100vh;
   }
 
   input {
+    width: 80%;
+  }
+  input:focus {
     width: 80%;
   }
 
@@ -270,7 +213,34 @@ label {
     height: auto;
   }
 }
+@media (max-width: 1024px) {
+  .container {
+    display: inline;
+    /* flex-direction: column; */
+    /* height: auto; */
+    height: 100vh;
+  }
 
+  img {
+    /* width: 100%;
+    height: auto; */
+    display: none;
+  }
+
+  .form {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  input {
+    width: 80%;
+  }
+  input:focus {
+    width: 80%;
+  }
+}
 @media (min-width: 1024px) {
   .container {
     flex-direction: row;

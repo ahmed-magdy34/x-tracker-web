@@ -19,9 +19,9 @@ const registerValues = {};
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 /////////////////////////////////////////////////////
-toLoginButton.addEventListener("click", () => {
-  window.location.href = "login.html";
-});
+// toLoginButton.addEventListener("click", () => {
+//   window.location.href = "login.html";
+// });
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
