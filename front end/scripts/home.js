@@ -94,8 +94,14 @@ const newAmount = document.getElementById("new-amount");
 const newDate = document.getElementById("new-date");
 /////////////////////////////helper variables////////////////////////////
 let expenseToEdit = {};
+if (!localStorage.getItem("authToken")) {
+  window.location.href = "login.html";
+} else {
+  console.log(localStorage.getItem("authToken"));
+}
 /////////////////////////////////
 signOutButton.addEventListener("click", () => {
+  localStorage.removeItem("authToken");
   window.location.href = "login.html";
 });
 const deleteExpense = (id) => {
@@ -156,9 +162,11 @@ addForm.addEventListener("submit", (e) => {
   }
   if (Number(newAmount.value) < 0) {
     newAmountError.classList.remove("hidden");
+    return;
   }
   if (Number(newAmount.value) === 0) {
     newAmountZeroError.classList.remove("hidden");
+    return;
   }
   const newExpense = {
     description: newDescription.value,

@@ -1,4 +1,5 @@
-"use strict";
+import { register } from "../services/apiFunctions.js";
+("use strict");
 
 const firstName = document.getElementById("first-name");
 const lastName = document.getElementById("last-name");
@@ -19,9 +20,7 @@ const registerValues = {};
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 /////////////////////////////////////////////////////
-// toLoginButton.addEventListener("click", () => {
-//   window.location.href = "login.html";
-// });
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -69,15 +68,24 @@ form.addEventListener("submit", (e) => {
   }
 
   if (formIsValid) {
-    registerValues.firstName = firstName.value.trim("");
-    registerValues.lastName = lastName.value.trim("");
-    registerValues.email = email.value.trim("");
-    registerValues.password = password.value.trim("");
+    registerValues.first_name = firstName.value.trim();
+    registerValues.last_name = lastName.value.trim();
+    registerValues.email = email.value.trim();
+    registerValues.password = password.value.trim();
 
     firstName.value = "";
     lastName.value = "";
     email.value = "";
     password.value = "";
+    register(registerValues).then((res) => {
+      if (res.error) {
+        // Display the error message returned by the backend
+        alert(res.error); // Replace this with UI error handling
+      } else if (res.message === "User registered successfully") {
+        window.location.href = "login.html";
+        alert(res.message);
+      }
+    });
 
     console.log(registerValues);
   }

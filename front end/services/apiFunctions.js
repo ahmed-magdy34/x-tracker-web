@@ -16,7 +16,7 @@ export const register = async (newUser) => {
       : null;
 
     if (!response.ok) {
-      throw new Error(result?.message || `HTTP error: ${response.status}`);
+      throw new Error(result?.error || `HTTP error: ${response.status}`);
     }
 
     return result;
@@ -44,12 +44,12 @@ export const login = async (loginData) => {
       : null;
 
     if (!response.ok) {
-      throw new Error(result?.message || `HTTP error: ${response.status}`);
+      throw new Error(result?.error || `HTTP error: ${response.status}`);
     }
 
-    if (result?.token) {
-      localStorage.setItem("authToken", result.token);
-    }
+    // if (result?.token) {
+    //   localStorage.setItem("authToken", result.token);
+    // }
 
     return result;
   } catch (err) {

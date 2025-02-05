@@ -10,3 +10,39 @@ api_bp = Blueprint('api', __name__)
 def test():
     return {'message': 'API is working'}, 200
 
+
+# User Registration
+@api_bp.route('/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    if not all(k in data for k in ('first_name', 'last_name', 'email', 'password')):
+        return jsonify({'error': 'Missing data'}), 400
+
+    if User.query.filter_by(email=data['email']).first():
+        return jsonify({'error': 'Email already exists'}), 409
+
+    hashed_password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
+    user = User(
+        first_name=data['first_name'],
+        last_name=data['last_name'],
+        email=data['email'],
+        password=hashed_password
+    )
+    db.session.add(user)
+    db.session.commit()
+
+    return jsonify({'message': 'User registered successfully'}), 201
+
+
+# User Login
+@api_bp.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    user = User.query.filter_by(email=data.get('email')).first()
+
+    if user and bcrypt.check_password_hash(user.password, data.get('password')):
+        access_token = create_access_token(identity=str(user.id))  # Convert user.id to string
+        return jsonify({'access_token': access_token}), 200
+
+    return jsonify({'error': 'Invalid credentials'}), 401
+

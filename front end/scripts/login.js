@@ -1,4 +1,7 @@
 "use strict";
+
+import { login } from "../services/apiFunctions.js";
+
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const button = document.getElementById("submit-btn");
@@ -40,6 +43,14 @@ form.addEventListener("submit", (e) => {
     email.value = "";
     password.value = "";
     console.log(loginValues);
-    window.location.href = "home.html";
+    login(loginValues).then((res) => {
+      console.log(res);
+      if (res.access_token) {
+        localStorage.setItem("authToken", res.access_token);
+        window.location.href = "home.html";
+      } else {
+        alert(res.error);
+      }
+    });
   }
 });
