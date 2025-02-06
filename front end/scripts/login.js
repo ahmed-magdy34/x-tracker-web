@@ -11,6 +11,8 @@ const form = document.getElementById("log-form");
 const toLoginButton = document.getElementById("link-btn");
 //////////////////////////////////////////////////////
 const loginValues = {};
+const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 ///////////////////////////////////////////////////////
 if (localStorage.getItem("authToken")) {
 }
@@ -19,7 +21,7 @@ form.addEventListener("submit", (e) => {
 
   let formIsValid = true;
 
-  if (!email.value) {
+  if (!email.value||!emailPattern.test(email.value)) {
     email.classList.add("error");
     formIsValid = false;
     emailError.classList.remove("err-hide");

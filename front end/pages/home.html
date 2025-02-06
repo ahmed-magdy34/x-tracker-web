@@ -12,7 +12,7 @@
     />
   </head>
   <body>
-    <header class="nav">
+    <nav class="nav">
       <div class="logo">
         <img
           src="/front end/assets/logo/6549528ae9f24d87beb1a90f3b3bf9ff-free.png"
@@ -24,8 +24,100 @@
       <div class="nav-links">
         <button class="nav-btn" id="sign-out">Sign out</button>
       </div>
-    </header>
-    <main class="container">
+    </nav>
+    <!--------------------------->
+    <div class="container main-content">
+      <header>
+        <h1>Expense Dashboard</h1>
+        <button class="add-expense-btn" id="add-btn">Add Expense</button>
+      </header>
+
+      <section class="summary-cards">
+        <div class="card">
+          <h2>Total Expenses</h2>
+          <p class="amount" id="total-value">$0</p>
+        </div>
+        <div class="card">
+          <h2>Number of Expenses</h2>
+          <p class="count" id="no-of-x">0</p>
+        </div>
+      </section>
+      <main>
+        <table class="expense-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </main>
+      <section class="edit-modal-overlay hidden" id="edit-overlay">
+        <div class="edit-modal" id="edit-modal">
+          <form id="edit-form" class="modal-content">
+            <p class="err hidden" id="empty-err">all fields are required</p>
+            <p class="err hidden" id="amount-err">amount can't be negative</p>
+            <p class="err hidden" id="amount-err-zero">amount can't be 0</p>
+
+            <div class="close-modal">
+              <button type="button" id="close-btn">X</button>
+            </div>
+            <div>
+              <h3>Edit Expense</h3>
+            </div>
+            <div class="form-des">
+              <label for="description">Description</label>
+              <input type="text" id="description" />
+            </div>
+            <div class="form-amount">
+              <label for="amount">Amount</label>
+              <input type="number" id="amount" />
+            </div>
+            <div class="form-date">
+              <label for="date">Date</label>
+              <input type="date" name="date" id="date" />
+            </div>
+            <button class="modal-submit" id="submit-btn">Submit</button>
+          </form>
+        </div>
+      </section>
+      <section class="add-modal-overlay hidden" id="add-overlay">
+        <div class="add-modal">
+          <form id="add-form" class="add-modal-content">
+            <p class="err hidden" id="new-empty-err">all fields are required</p>
+            <p class="err hidden" id="new-amount-err">
+              amount can't be negative
+            </p>
+            <p class="err hidden" id="new-amount-err-zero">amount can't be 0</p>
+
+            <div class="close-add-modal">
+              <button type="button" id="close-add-btn">X</button>
+            </div>
+            <div>
+              <h3>Add Expense</h3>
+            </div>
+            <div class="form-des">
+              <label for="new-description">Description</label>
+              <input type="text" id="new-description" />
+            </div>
+            <div class="form-amount">
+              <label for="new-amount">Amount</label>
+              <input type="number" id="new-amount" />
+            </div>
+            <div class="form-date">
+              <label for="new-date">Date</label>
+              <input type="date" name="date" id="new-date" />
+            </div>
+            <button class="modal-submit" id="submit-add-btn">Submit</button>
+          </form>
+        </div>
+      </section>
+    </div>
+    <!-- <main class="container">
       <div class="inner-container">
         <div class="section-cont">
           <section>
@@ -159,7 +251,7 @@
           <p>Twitter</p>
         </div>
       </div>
-    </footer>
+    </footer> -->
     <script type="module" src="/front end/scripts/home.js"></script>
   </body>
 </html>

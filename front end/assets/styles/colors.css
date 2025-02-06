@@ -1,12 +1,14 @@
 /* colors.css - define all your colors here */
 :root {
-  --primary-color: #0d1b2a;
+  --primary-color: #002349;
   --secondary-color: #0d1b2a;
   --accent-color: #89c2d9;
-  --background-color: #e0e1dd;
+  --background-color: #f4f6f8;
   --text-color: #0d1b2a;
   --border-color: #ddd;
   --error-color: #f44336;
   --error-slate: #ff8fa3;
-  --success-color: #4caf50;
+  --nav-background: #2c3e50;
+  --table-header: #ecf0f1;
+  --table-row-hover: #e8f4fd;
 }
