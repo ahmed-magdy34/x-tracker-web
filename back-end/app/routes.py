@@ -79,3 +79,37 @@ def get_expenses():
         }
         for e in expenses
     ]), 200
+@api_bp.route('/expenses/<int:expense_id>', methods=['PUT'])
+@jwt_required()
+def update_expense(expense_id):
+    user_id = int(get_jwt_identity())
+    data = request.get_json()
+
+    expense = Expense.query.filter_by(id=expense_id, user_id=user_id).first()
+    if not expense:
+        return jsonify({'error': 'Expense not found'}), 404
+
+    if 'amount' in data:
+        expense.amount = data['amount']
+    if 'date' in data:
+        expense.date = data['date']
+
+    db.session.commit()
+
+    return jsonify({'message': 'Expense updated successfully'}), 200
+
+
+# Delete Expense
+@api_bp.route('/expenses/<int:expense_id>', methods=['DELETE'])
+@jwt_required()
+def delete_expense(expense_id):
+    user_id = int(get_jwt_identity())
+    expense = Expense.query.filter_by(id=expense_id, user_id=user_id).first()
+
+    if not expense:
+        return jsonify({'error': 'Expense not found'}), 404
+
+    db.session.delete(expense)
+    db.session.commit()
+
+    return jsonify({'message': 'Expense deleted successfully'}), 200

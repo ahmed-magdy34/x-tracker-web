@@ -101,7 +101,30 @@ export const getExpenses = async (token) => {
     }
     return result;
   } catch (err) {
-    console.error("Add Error:", err.message);
+    console.error("get Error:", err.message);
+    return { error: err.message };
+  }
+};
+export const deleteExpenseApi = async (id, token) => {
+  try {
+    const response = await fetch(`http://127.0.0.1:5000/api/expenses/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const result = response.headers
+      .get("content-type")
+      ?.includes("application/json")
+      ? await response.json()
+      : null;
+    if (!response.ok) {
+      throw new Error(result?.error || `HTTP error: ${response.status}`);
+    }
+    return result;
+  } catch (err) {
+    console.error("delete Error:", err.message);
     return { error: err.message };
   }
 };
