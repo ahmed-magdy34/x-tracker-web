@@ -54,10 +54,10 @@ def add_expense():
     user_id = int(get_jwt_identity())  # Convert back to integer
     data = request.get_json()
 
-    if not all(k in data for k in ('amount', 'date')):
-        return jsonify({'error': 'Amount and Date are required'}), 400
+    if not all(k in data for k in ('amount', 'date', 'description')):
+        return jsonify({'error': 'Amount, Date and Description  are required'}), 400
 
-    expense = Expense(amount=data['amount'], date=data['date'], user_id=user_id)
+    expense = Expense(amount=data['amount'], date=data['date'], description=data['description'], user_id=user_id)
     db.session.add(expense)
     db.session.commit()
 
@@ -74,7 +74,8 @@ def get_expenses():
         {
             'id': e.id,
             'amount': e.amount,
-            'date': e.date  # Date is now a string
+            'date': e.date , 
+            'description':e.description,
         }
         for e in expenses
     ]), 200

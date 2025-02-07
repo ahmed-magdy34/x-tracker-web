@@ -14,3 +14,4 @@ class Expense(db.Model):
     amount = db.Column(db.Float, nullable=False)
     date = db.Column(db.String(100), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    description = db.Column(db.String(200), nullable=False)
