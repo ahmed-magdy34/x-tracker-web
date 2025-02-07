@@ -9,6 +9,7 @@ const passwordError = document.getElementById("password-error");
 const emailError = document.getElementById("email-error");
 const form = document.getElementById("log-form");
 const toLoginButton = document.getElementById("link-btn");
+const loginToast = document.getElementById("login-toast");
 //////////////////////////////////////////////////////
 const loginValues = {};
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -21,7 +22,7 @@ form.addEventListener("submit", (e) => {
 
   let formIsValid = true;
 
-  if (!email.value||!emailPattern.test(email.value)) {
+  if (!email.value || !emailPattern.test(email.value)) {
     email.classList.add("error");
     formIsValid = false;
     emailError.classList.remove("err-hide");
@@ -51,7 +52,11 @@ form.addEventListener("submit", (e) => {
         localStorage.setItem("authToken", res.access_token);
         window.location.href = "home.html";
       } else {
-        alert(res.error);
+        loginToast.innerHTML = `<div class="toast">${res.error} ❌</div>`;
+        loginToast.classList.remove("hidden");
+        setTimeout(() => {
+          loginToast.classList.add("hidden");
+        }, 3000);
       }
     });
   }

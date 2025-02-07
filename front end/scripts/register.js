@@ -8,6 +8,7 @@ const password = document.getElementById("password");
 const button = document.getElementById("submit-btn");
 const form = document.getElementById("reg-form");
 const toLoginButton = document.getElementById("link-btn");
+const registerToast = document.getElementById("register-toast");
 
 ////////////////////////////////////////////////////
 const emailError = document.getElementById("email-error");
@@ -79,11 +80,18 @@ form.addEventListener("submit", (e) => {
     password.value = "";
     register(registerValues).then((res) => {
       if (res.error) {
-        // Display the error message returned by the backend
-        alert(res.error); // Replace this with UI error handling
+        registerToast.innerHTML = `<div class="toast">${res.error} ❌</div>`;
+        registerToast.classList.remove("hidden");
+        setTimeout(() => {
+          registerToast.classList.add("hidden");
+        }, 3000);
       } else if (res.message === "User registered successfully") {
+        registerToast.innerHTML = `<div class="toast">${res.message} ✅</div>`;
+        registerToast.classList.remove("hidden");
+        setTimeout(() => {
+          registerToast.classList.add("hidden");
+        }, 3000);
         window.location.href = "login.html";
-        alert(res.message);
       }
     });
 

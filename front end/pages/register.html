@@ -15,30 +15,33 @@
     </header> -->
     <main class="container">
       <section class="image-section">
-        <img src="/front end/assets/images/finalimage.png" alt="image1" />
+        <img
+          class="img"
+          src="/front end/assets/images/finalimage.png"
+          alt="image1"
+        />
       </section>
       <section>
         <form class="form" id="reg-form">
           <div class="logo-group">
             <img
               class="logo-img"
-              src="/front end/assets/logo/6549528ae9f24d87beb1a90f3b3bf9ff-free.png"
+              src="/front end/assets/logo/blue.png"
               alt="logo"
             />
-            <p class="logo">X- <span>Tracker</span></p>
           </div>
           <div>
             <h1 class="welcome">Welcome to X-Tracker</h1>
           </div>
           <div class="form-group">
-            <label for="first-name">First Name</label>
+            <!-- <label for="first-name">First Name</label> -->
             <input type="text" placeholder="first name..." id="first-name" />
             <span id="first-name-error" class="input-error err-hide">
               First name is required</span
             >
           </div>
           <div class="form-group">
-            <label for="last-name">Last Name</label>
+            <!-- <label for="last-name">Last Name</label> -->
             <input
               type="text"
               name="last-name"
@@ -50,14 +53,14 @@
             >
           </div>
           <div class="form-group-email">
-            <label for="email">Email</label>
+            <!-- <label for="email">Email</label> -->
             <input type="text" name="email" id="email" placeholder="email..." />
             <span id="email-error" class="input-error err-hide">
               Valid email is required</span
             >
           </div>
           <div class="form-group">
-            <label for="password">Password</label>
+            <!-- <label for="password">Password</label> -->
             <input
               type="password"
               name="password"
@@ -68,13 +71,16 @@
               password is required</span
             >
           </div>
+          <div class="submit-div">
+            <button class="btn" type="submit" id="submit-btn">Submit</button>
+          </div>
           <p class="dir-link">
             Already have an account?
             <a href="/front end/pages/login.html">Sign In</a>
           </p>
-          <button class="btn" type="submit" id="submit-btn">Submit</button>
         </form>
       </section>
+      <div class="toast-container hidden" id="register-toast"></div>
     </main>
 
     <script type="module" src="/front end/scripts/register.js"></script>

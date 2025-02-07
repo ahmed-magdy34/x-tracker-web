@@ -21,23 +21,21 @@
           <div class="logo-group">
             <img
               class="logo-img"
-              src="/front end/assets/logo/6549528ae9f24d87beb1a90f3b3bf9ff-free.png"
+              src="/front end/assets/logo/blue.png"
               alt="logo"
             />
-            <p class="logo">X- <span>Tracker</span></p>
           </div>
           <div>
             <h1 class="welcome">Welcome Back!</h1>
           </div>
           <div class="form-group-email">
-            <label for="email">Email</label>
             <input type="text" name="email" id="email" placeholder="email..." />
             <span id="email-error" class="input-error , err-hide"
               >valid email is required</span
             >
           </div>
           <div class="form-group">
-            <label for="password">Password</label>
+            <!-- <label for="password">Password</label> -->
             <input
               type="password"
               name="password"
@@ -48,14 +46,19 @@
               Password is required</span
             >
           </div>
+          <div class="submit-div">
+            <button class="btn" type="submit" id="submit-btn">Submit</button>
+          </div>
           <p class="dir-link">
             Don't have an account?
-            <a href="/front end/pages/register.html">Register here</a>
+            <span class="link">
+              <a href="/front end/pages/register.html">Register here</a>
+            </span>
           </p>
-          <button class="btn" type="submit" id="submit-btn">Submit</button>
         </form>
       </section>
     </main>
+    <div class="toast-container hidden" id="login-toast"></div>
 
     <script type="module" src="/front end/scripts/login.js"></script>
   </body>

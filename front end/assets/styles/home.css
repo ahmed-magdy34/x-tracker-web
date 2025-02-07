@@ -36,9 +36,8 @@ body {
 }
 
 .logo-img {
-  width: 40px;
+  width: 120px;
   height: 40px;
-  border-radius: 20px;
 }
 
 .logo-txt {
@@ -134,29 +133,29 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 700px;
+  height: 600px;
   transform: translate(-50%, -50%);
   background: white;
-  padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   z-index: 1000;
 }
 
-.hidden {
-  display: none;
-}
-
 .modal-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
   align-items: center;
-  gap: 24px;
+  gap: 12px;
 }
 
 .modal-content input {
-  padding: 4px;
+  padding: 12px;
   border: none;
+  width: 300px;
   background-color: var(--background-color);
   border-radius: 12px;
 }
@@ -164,7 +163,7 @@ body {
 .close-modal {
   display: flex;
   justify-content: flex-end;
-  width: 100%;
+  width: 70%;
 }
 
 .close-modal button {
@@ -172,6 +171,7 @@ body {
   border: none;
   cursor: pointer;
   transition: all 500ms;
+  font-size: larger;
 }
 
 .close-modal button:hover {
@@ -201,9 +201,10 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 700px;
+  height: 600px;
   transform: translate(-50%, -50%);
   background: white;
-  padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   z-index: 1000;
@@ -213,22 +214,26 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
+  width: 100%;
+  height: 100%;
 }
 .add-modal-content input {
-  padding: 4px;
+  padding: 12px;
   border: none;
+  width: 300px;
   background-color: var(--background-color);
   border-radius: 12px;
 }
 .close-add-modal {
   display: flex;
   justify-content: flex-end;
-  width: 100%;
+  width: 80%;
 }
 .close-add-modal button {
   background-color: transparent;
   border: none;
+  font-size: larger;
   cursor: pointer;
   transition: all 500ms;
 }
@@ -408,4 +413,50 @@ h1 {
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--primary-color);
+}
+.confirm-modal {
+  position: fixed;
+  top: 50%;
+  left: 40%;
+  background-color: burlywood;
+  padding: 50px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.confirm-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.confirm-btns button {
+  background-color: var(--background-color);
+  border: none;
+  padding: 10px;
+  border-radius: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.confirm-btns button:hover {
+  background-color: darkgray;
+  transition: all;
+  transition-duration: 500ms;
+}
+
+.hidden {
+  display: none;
+}
+.form-amount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+}
+.form-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 39px;
 }

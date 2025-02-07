@@ -74,10 +74,8 @@ const amountEditInput = document.getElementById("amount");
 const dateEditInput = document.getElementById("date");
 const modalOverlay = document.getElementById("edit-overlay");
 const editModal = document.getElementById("edit-modal");
-const summary = document.getElementById("summary-section");
 const closeButton = document.getElementById("close-btn");
 const tableBody = document.getElementById("table-body");
-const submitButton = document.getElementById("submit-btn");
 const editForm = document.getElementById("edit-form");
 const signOutButton = document.getElementById("sign-out");
 const amountError = document.getElementById("amount-err");
@@ -93,6 +91,26 @@ const newDescription = document.getElementById("new-description");
 const newAmount = document.getElementById("new-amount");
 const newDate = document.getElementById("new-date");
 /////////////////////////////helper variables////////////////////////////
+const clearAddModal = () => {
+  addModalOverlay.classList.add("hidden");
+  newModalEmptyError.classList.add("hidden");
+  newAmountError.classList.add("hidden");
+  newAmountZeroError.classList.add("hidden");
+  newAmount.value = "";
+  newDescription.value = "";
+  newDate.value = "";
+};
+const clearEditModal=()=>{
+  modalOverlay.classList.add("hidden");
+  editModal.classList.add("hidden");
+  modalEmptyError.classList.remove("hidden");
+  newAmountError.classList.remove("hidden");
+  newAmountZeroError.classList.remove("hidden");
+
+
+
+}
+///////////////////////////////////////////////////
 let expenseToEdit = {};
 if (!localStorage.getItem("authToken")) {
   window.location.href = "login.html";
@@ -105,9 +123,14 @@ signOutButton.addEventListener("click", () => {
   window.location.href = "login.html";
 });
 const deleteExpense = (id) => {
-  testArr = testArr.filter((el) => el.id !== id);
-  updateTable();
-  updateSummary();
+  const confirmation = confirm("Are you sure you want to delete this expense?");
+  if (confirmation) {
+    testArr = testArr.filter((el) => el.id !== id);
+    updateTable();
+    updateSummary();
+  } else {
+    return;
+  }
 };
 const editExpense = (id) => {
   expenseToEdit = testArr.filter((el) => el.id === Number(id))[0];
@@ -116,12 +139,12 @@ const editExpense = (id) => {
   dateEditInput.value = expenseToEdit.date;
   modalOverlay.classList.remove("hidden");
   editModal.classList.remove("hidden");
+
 };
 closeButton.addEventListener("click", (e) => {
   e.preventDefault();
   modalOverlay.classList.add("hidden");
   editModal.classList.add("hidden");
-  console.log("clicked");
 });
 editForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -145,19 +168,19 @@ editForm.addEventListener("submit", (e) => {
       : formatDate(expenseToEdit?.date),
   };
   console.log(editedExpense);
-  modalOverlay.classList.add("hidden");
-  editModal.classList.add("hidden");
+  
 });
 
 /////////////////////////////////
 closeAddModal.addEventListener("click", (e) => {
   e.preventDefault();
-  addModalOverlay.classList.add("hidden");
+  clearAddModal();
 });
 addForm.addEventListener("submit", (e) => {
   e.preventDefault();
   if (!newAmount.value || !newDescription.value || !newDate.value) {
     newModalEmptyError.classList.remove("hidden");
+
     return;
   }
   if (Number(newAmount.value) < 0) {
@@ -173,8 +196,9 @@ addForm.addEventListener("submit", (e) => {
     amount: Number(newAmount.value),
     date: formatDate(newDate.value),
   };
+  clearAddModal();
+
   console.log(newExpense);
-  addModalOverlay.classList.add("hidden");
 });
 
 /////////////////////table function////////////

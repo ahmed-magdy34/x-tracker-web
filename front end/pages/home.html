@@ -15,11 +15,10 @@
     <nav class="nav">
       <div class="logo">
         <img
-          src="/front end/assets/logo/6549528ae9f24d87beb1a90f3b3bf9ff-free.png"
+          src="/front end/assets/logo/white.png"
           alt="logo"
           class="logo-img"
         />
-        <p class="logo-txt">X- <span>Tracker</span></p>
       </div>
       <div class="nav-links">
         <button class="nav-btn" id="sign-out">Sign out</button>
@@ -116,142 +115,15 @@
           </form>
         </div>
       </section>
+      <div class="hidden confirm-modal">
+        <p>Are you sure you want to delete this expense?</p>
+        <div class="confirm-btns hidden">
+          <button id="confirm-btn">Confirm</button>
+          <button id="cancel-btn">Cancel</button>
+        </div>
+      </div>
     </div>
-    <!-- <main class="container">
-      <div class="inner-container">
-        <div class="section-cont">
-          <section>
-            <h1 class="exp-head">Your Expenses</h1>
-            <div class="table-wrapper">
-              <table class="content-table">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Description</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="table-body"></tbody>
-              </table>
-            </div>
-          </section>
-        </div>
-        <section class="summary-section" id="summary-section">
-          <h3>Summary</h3>
-          <div class="sum-elements">
-            <p>No. of Expenses: <span id="no-of-x">0</span></p>
-            <p>Total Amount: <span id="total-value">0</span> $</p>
-            <button class="add-x" id="add-btn">Add Expense</button>
-          </div>
-        </section>
-        <section class="edit-modal-overlay hidden" id="edit-overlay">
-          <div class="edit-modal" id="edit-modal">
-            <form id="edit-form" class="modal-content">
-              <p class="err hidden" id="empty-err">all fields are required</p>
-              <p class="err hidden" id="amount-err">amount can't be negative</p>
-              <p class="err hidden" id="amount-err-zero">amount can't be 0</p>
 
-              <div class="close-modal">
-                <button type="button" id="close-btn">X</button>
-              </div>
-              <div>
-                <h3>Edit Expense</h3>
-              </div>
-              <div class="form-des">
-                <label for="description">Description</label>
-                <input type="text" id="description" />
-              </div>
-              <div class="form-amount">
-                <label for="amount">Amount</label>
-                <input type="number" id="amount" />
-              </div>
-              <div class="form-date">
-                <label for="date">Date</label>
-                <input type="date" name="date" id="date" />
-              </div>
-              <button class="modal-submit" id="submit-btn">Submit</button>
-            </form>
-          </div>
-        </section>
-      </div>
-
-      <section class="add-modal-overlay hidden" id="add-overlay">
-        <div class="add-modal">
-          <form id="add-form" class="add-modal-content">
-            <p class="err hidden" id="new-empty-err">all fields are required</p>
-            <p class="err hidden" id="new-amount-err">
-              amount can't be negative
-            </p>
-            <p class="err hidden" id="new-amount-err-zero">amount can't be 0</p>
-
-            <div class="close-add-modal">
-              <button type="button" id="close-add-btn">X</button>
-            </div>
-            <div>
-              <h3>Add Expense</h3>
-            </div>
-            <div class="form-des">
-              <label for="new-description">Description</label>
-              <input type="text" id="new-description" />
-            </div>
-            <div class="form-amount">
-              <label for="new-amount">Amount</label>
-              <input type="number" id="new-amount" />
-            </div>
-            <div class="form-date">
-              <label for="new-date">Date</label>
-              <input type="date" name="date" id="new-date" />
-            </div>
-            <button class="modal-submit" id="submit-add-btn">Submit</button>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-container">
-        <div>
-          <div class="footer-logo">
-            <img
-              src="/front end/assets/logo/6549528ae9f24d87beb1a90f3b3bf9ff-free.png"
-              alt="footer-logo"
-            />
-            <h4>X-Tracker</h4>
-          </div>
-          <div class="mission">
-            <ul>
-              <li><p>Our Mission :</p></li>
-              <li>Accssebility</li>
-              <li>Stability</li>
-              <li>Security</li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <h4>About Us:</h4>
-          <p>we try to make your life easier</p>
-          <p>by providing you with a software</p>
-          <p>that helps you track your expenses</p>
-          <p>at any time and any where</p>
-        </div>
-        <div>
-          <h4>Contact Us:</h4>
-          <p>+200987654</p>
-          <p>Facebook</p>
-          <p>ahmedmagdy334m@gmail.com</p>
-          <p>Twitter</p>
-        </div>
-        <div>
-          <h4>Follow Us:</h4>
-          <p>Instagram</p>
-          <p>Facebook</p>
-          <p>Linked In</p>
-          <p>Twitter</p>
-        </div>
-      </div>
-    </footer> -->
     <script type="module" src="/front end/scripts/home.js"></script>
   </body>
 </html>

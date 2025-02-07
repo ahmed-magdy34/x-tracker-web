@@ -46,3 +46,35 @@ def login():
 
     return jsonify({'error': 'Invalid credentials'}), 401
 
+
+# Add Expense
+@api_bp.route('/expenses', methods=['POST'])
+@jwt_required()
+def add_expense():
+    user_id = int(get_jwt_identity())  # Convert back to integer
+    data = request.get_json()
+
+    if not all(k in data for k in ('amount', 'date')):
+        return jsonify({'error': 'Amount and Date are required'}), 400
+
+    expense = Expense(amount=data['amount'], date=data['date'], user_id=user_id)
+    db.session.add(expense)
+    db.session.commit()
+
+    return jsonify({'message': 'Expense added successfully'}), 201
+
+# Get Expenses
+@api_bp.route('/expenses', methods=['GET'])
+@jwt_required()
+def get_expenses():
+    user_id = int(get_jwt_identity())  # Convert back to integer
+    expenses = Expense.query.filter_by(user_id=user_id).all()
+
+    return jsonify([
+        {
+            'id': e.id,
+            'amount': e.amount,
+            'date': e.date  # Date is now a string
+        }
+        for e in expenses
+    ]), 200
