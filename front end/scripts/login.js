@@ -47,7 +47,6 @@ form.addEventListener("submit", (e) => {
     password.value = "";
     console.log(loginValues);
     login(loginValues).then((res) => {
-      console.log(res);
       if (res.access_token) {
         localStorage.setItem("authToken", res.access_token);
         window.location.href = "home.html";

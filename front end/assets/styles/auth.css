@@ -272,31 +272,3 @@ label {
 .hidden {
   display: none;
 }
-.toast {
-  background-color: whitesmoke;
-  color: black;
-  padding: 15px 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  transform: translateX(100%);
-  animation: slide-in 0.5s ease-out forwards, fade-out 0.5s ease-in 3s forwards;
-}
-/*chat gpt*/
-@keyframes slide-in {
-  from {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fade-out {
-  to {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-}

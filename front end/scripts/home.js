@@ -1,73 +1,9 @@
+import { addExpense, getExpenses } from "../services/apiFunctions.js";
 import { formatDate } from "../utils/dateFormat.js";
 
-let testArr = [
-  {
-    id: 1,
-    description: "bought month supplies",
-    date: Date.now(),
-    amount: 150,
-  },
-  {
-    id: 2,
-    description: "dog food",
-    date: Date.now(),
-    amount: 120,
-  },
-  {
-    id: 3,
-    description: "bought laptop",
-    date: Date.now(),
-    amount: 600,
-  },
-  {
-    id: 4,
-    description: "bought laptop",
-    date: Date.now(),
-    amount: 600,
-  },
-  {
-    id: 2,
-    description: "dog food",
-    date: Date.now(),
-    amount: 120,
-  },
-  {
-    id: 2,
-    description: "dog food",
-    date: Date.now(),
-    amount: 120,
-  },
-  {
-    id: 2,
-    description: "dog food",
-    date: Date.now(),
-    amount: 120,
-  },
-  {
-    id: 2,
-    description: "dog food",
-    date: Date.now(),
-    amount: 120,
-  },
-  {
-    id: 2,
-    description: "dog food",
-    date: Date.now(),
-    amount: 120,
-  },
-  {
-    id: 2,
-    description: "dog food",
-    date: Date.now(),
-    amount: 120,
-  },
-  {
-    id: 2,
-    description: "dog food",
-    date: Date.now(),
-    amount: 120,
-  },
-];
+let userExpenses;
+const token = localStorage.getItem("authToken");
+
 /////////////////////////dom selections/////////////////
 const descriptionEditInput = document.getElementById("description");
 const amountEditInput = document.getElementById("amount");
@@ -90,7 +26,9 @@ const closeAddModal = document.getElementById("close-add-btn");
 const newDescription = document.getElementById("new-description");
 const newAmount = document.getElementById("new-amount");
 const newDate = document.getElementById("new-date");
+const homeToast = document.getElementById("home-toast");
 /////////////////////////////helper variables////////////////////////////
+
 const clearAddModal = () => {
   addModalOverlay.classList.add("hidden");
   newModalEmptyError.classList.add("hidden");
@@ -100,16 +38,31 @@ const clearAddModal = () => {
   newDescription.value = "";
   newDate.value = "";
 };
-const clearEditModal=()=>{
+const clearEditModal = () => {
   modalOverlay.classList.add("hidden");
   editModal.classList.add("hidden");
   modalEmptyError.classList.remove("hidden");
   newAmountError.classList.remove("hidden");
   newAmountZeroError.classList.remove("hidden");
-
-
-
-}
+};
+const toastHandler = (message, emoji) => {
+  homeToast.innerHTML = `<div class="toast">${message} ${emoji}</div>`;
+  homeToast.classList.remove("hidden");
+  setTimeout(() => {
+    homeToast.classList.add("hidden");
+  }, 3000);
+};
+const getUserExpenses = async () => {
+  const response = await getExpenses(token);
+  if (response.error) {
+    toastHandler(response.error, "❌");
+  } else {
+    userExpenses = await response;
+  }
+  updateTable();
+  updateSummary();
+};
+getUserExpenses();
 ///////////////////////////////////////////////////
 let expenseToEdit = {};
 if (!localStorage.getItem("authToken")) {
@@ -133,13 +86,12 @@ const deleteExpense = (id) => {
   }
 };
 const editExpense = (id) => {
-  expenseToEdit = testArr.filter((el) => el.id === Number(id))[0];
+  expenseToEdit = userExpenses?.filter((el) => el.id === Number(id))[0];
   amountEditInput.value = expenseToEdit.amount;
   descriptionEditInput.value = expenseToEdit.description;
   dateEditInput.value = expenseToEdit.date;
   modalOverlay.classList.remove("hidden");
   editModal.classList.remove("hidden");
-
 };
 closeButton.addEventListener("click", (e) => {
   e.preventDefault();
@@ -168,7 +120,6 @@ editForm.addEventListener("submit", (e) => {
       : formatDate(expenseToEdit?.date),
   };
   console.log(editedExpense);
-  
 });
 
 /////////////////////////////////
@@ -176,7 +127,7 @@ closeAddModal.addEventListener("click", (e) => {
   e.preventDefault();
   clearAddModal();
 });
-addForm.addEventListener("submit", (e) => {
+addForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!newAmount.value || !newDescription.value || !newDate.value) {
     newModalEmptyError.classList.remove("hidden");
@@ -196,15 +147,20 @@ addForm.addEventListener("submit", (e) => {
     amount: Number(newAmount.value),
     date: formatDate(newDate.value),
   };
-  clearAddModal();
-
-  console.log(newExpense);
+  const token = localStorage.getItem("authToken");
+  const response = await addExpense(newExpense, token);
+  if (response?.message) {
+    toastHandler(response.message, "✅");
+  } else {
+    toastHandler("Something went wrong", "❌");
+  }
+  setTimeout(clearAddModal, 3000);
 });
 
 /////////////////////table function////////////
 const updateTable = () => {
   tableBody.innerHTML = "";
-  testArr.forEach((expense) => {
+  userExpenses?.forEach((expense) => {
     tableBody.insertAdjacentHTML(
       "afterbegin",
       `<tr>
@@ -246,11 +202,11 @@ const updateTable = () => {
 const numberSpan = document.getElementById("no-of-x");
 const totalValue = document.getElementById("total-value");
 const updateSummary = () => {
-  numberSpan.innerText = testArr.length;
-  totalValue.innerText = testArr.reduce(
+  numberSpan.innerText = userExpenses?.length;
+  totalValue.innerText = ` $ ${userExpenses?.reduce(
     (acc, el) => acc + Number(el.amount),
     0
-  );
+  )}`;
 };
 const addButton = document.getElementById("add-btn");
 addButton.addEventListener("click", () => {

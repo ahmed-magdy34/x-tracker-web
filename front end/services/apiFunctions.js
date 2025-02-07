@@ -57,9 +57,9 @@ export const login = async (loginData) => {
     return { error: err.message };
   }
 };
-const addExpense = async (newExpense, token) => {
+export const addExpense = async (newExpense, token) => {
   try {
-    const response = await fetch("http//127.0.0.1:5000/api/expense", {
+    const response = await fetch("http://127.0.0.1:5000/api/expenses", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +73,31 @@ const addExpense = async (newExpense, token) => {
       ? await response.json()
       : null;
     if (!response.ok) {
-      throw new Error(result?.message || `HTTP error: ${response.status}`);
+      throw new Error(result?.error || `HTTP error: ${response.status}`);
+    }
+    return result;
+  } catch (err) {
+    console.error("Add Error:", err.message);
+    return { error: err.message };
+  }
+};
+
+export const getExpenses = async (token) => {
+  try {
+    const response = await fetch("http://127.0.0.1:5000/api/expenses", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const result = response.headers
+      .get("content-type")
+      ?.includes("application/json")
+      ? await response.json()
+      : null;
+    if (!response.ok) {
+      throw new Error(result?.error || `HTTP error: ${response.status}`);
     }
     return result;
   } catch (err) {
