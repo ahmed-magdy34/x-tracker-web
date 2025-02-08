@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/front end/assets/styles/colors.css" />
+    <link rel="stylesheet" href="/front end/assets/styles/home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="logo">
+        <img
+          src="/front end/assets/logo/white.png"
+          alt="logo"
+          class="logo-img"
+        />
+      </div>
+      <div class="nav-links">
+        <button class="nav-btn" id="sign-out">Sign out</button>
+      </div>
+    </nav>
+    <!--------------------------->
+    <div class="container main-content">
+      <header>
+        <h1>Expense Dashboard</h1>
+        <button class="add-expense-btn" id="add-btn">Add Expense</button>
+      </header>
+
+      <section class="summary-cards">
+        <div class="card">
+          <h2>Total Expenses</h2>
+          <p class="amount" id="total-value">$0</p>
+        </div>
+        <div class="card">
+          <h2>Number of Expenses</h2>
+          <p class="count" id="no-of-x">0</p>
+        </div>
+      </section>
+      <main>
+        <table class="expense-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </main>
+      <section class="edit-modal-overlay hidden" id="edit-overlay">
+        <div class="edit-modal" id="edit-modal">
+          <form id="edit-form" class="modal-content">
+            <p class="err hidden" id="empty-err">all fields are required</p>
+
+            <div class="close-modal">
+              <button type="button" id="close-btn">X</button>
+            </div>
+            <div>
+              <h3>Edit Expense</h3>
+            </div>
+            <div class="form-des">
+              <input type="text" id="description" placeholder="Description" />
+            </div>
+            <div class="form-amount">
+              <input type="number" id="amount" placeholder="Amount" />
+              <p class="err hidden" id="amount-err">amount can't be negative</p>
+              <p class="err hidden" id="amount-err-zero">amount can't be 0</p>
+            </div>
+            <div class="form-date">
+              <input type="date" name="date" id="date" placeholder="Date" />
+            </div>
+            <button class="modal-submit" id="submit-btn">Submit</button>
+          </form>
+        </div>
+      </section>
+      <section class="add-modal-overlay hidden" id="add-overlay">
+        <div class="add-modal">
+          <form id="add-form" class="add-modal-content">
+            <p class="err hidden" id="new-empty-err">all fields are required</p>
+
+            <div class="close-add-modal">
+              <button type="button" id="close-add-btn">X</button>
+            </div>
+            <div>
+              <h3>Add Expense</h3>
+            </div>
+            <div class="form-des">
+              <input
+                type="text"
+                id="new-description"
+                placeholder="Description"
+              />
+            </div>
+            <div class="form-amount">
+              <input type="number" id="new-amount" placeholder="Amount" />
+              <p class="err hidden" id="new-amount-err">
+                amount can't be negative
+              </p>
+              <p class="err hidden" id="new-amount-err-zero">
+                amount can't be 0
+              </p>
+            </div>
+            <div class="form-date">
+              <input type="date" name="date" id="new-date" placeholder="Date" />
+            </div>
+            <button class="modal-submit" id="submit-add-btn">Submit</button>
+          </form>
+        </div>
+      </section>
+      <div class="hidden confirm-modal" id="confirm-popup">
+        <p>Are you sure you want to delete this expense?</p>
+        <div class="confirm-btns hidden">
+          <button id="confirm-btn">Confirm</button>
+          <button id="cancel-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <div class="toast-container hidden" id="home-toast"></div>
+
+    <script type="module" src="/front end/scripts/home.js"></script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+# create new virtual env
+python -m venv venv
+
+#running virtual env 
+venv\Scripts\Activate.ps1
+
+#creating requirments file
+pip freeze > requirments.txt
+
+#installing dependecies
+pip install -r requirments.txt
+
+# to inialize database run :
+flask shell 
+
+>>> from app import db, create_app
+>>> app = create_app()
+>>> app.app_context().push()
+>>> db.create_all()
+exit()
+
+

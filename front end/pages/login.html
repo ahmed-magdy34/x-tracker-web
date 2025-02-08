@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/front end/assets/styles/auth.css" />
+    <link rel="stylesheet" href="/front end/assets/styles/colors.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section>
+        <img
+          src="/front end/assets/images/finalimage.png"
+          alt="image1"
+          class="img"
+        />
+      </section>
+      <section>
+        <form class="form" id="log-form">
+          <div class="logo-group">
+            <img
+              class="logo-img"
+              src="/front end/assets/logo/blue.png"
+              alt="logo"
+            />
+          </div>
+          <div>
+            <h1 class="welcome">Welcome Back!</h1>
+          </div>
+          <div class="form-group-email">
+            <input type="text" name="email" id="email" placeholder="email..." />
+            <span id="email-error" class="input-error , err-hide"
+              >valid email is required</span
+            >
+          </div>
+          <div class="form-group">
+            <!-- <label for="password">Password</label> -->
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="password..."
+            />
+            <span id="password-error" class="input-error , err-hide">
+              Password is required</span
+            >
+          </div>
+          <div class="submit-div">
+            <button class="btn" type="submit" id="submit-btn">Submit</button>
+          </div>
+          <p class="dir-link">
+            Don't have an account?
+            <span class="link">
+              <a href="/front end/pages/register.html">Register here</a>
+            </span>
+          </p>
+        </form>
+      </section>
+    </main>
+    <div class="toast-container hidden" id="login-toast"></div>
+
+    <script type="module" src="/front end/scripts/login.js"></script>
+  </body>
+</html>

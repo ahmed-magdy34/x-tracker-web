@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/front end/assets/styles/auth.css" />
+    <link rel="stylesheet" href="/front end/assets/styles/colors.css" />
+  </head>
+  <body>
+    <!-- <header>
+      <div class="header">
+        <div><button class="sign-link" id="link-btn">Sign In</button></div>
+      </div>
+    </header> -->
+    <main class="container">
+      <section class="image-section">
+        <img
+          class="img"
+          src="/front end/assets/images/finalimage.png"
+          alt="image1"
+        />
+      </section>
+      <section>
+        <form class="form" id="reg-form">
+          <div class="logo-group">
+            <img
+              class="logo-img"
+              src="/front end/assets/logo/blue.png"
+              alt="logo"
+            />
+          </div>
+          <div>
+            <h1 class="welcome">Welcome to X-Tracker</h1>
+          </div>
+          <div class="form-group">
+            <!-- <label for="first-name">First Name</label> -->
+            <input type="text" placeholder="first name..." id="first-name" />
+            <span id="first-name-error" class="input-error err-hide">
+              First name is required</span
+            >
+          </div>
+          <div class="form-group">
+            <!-- <label for="last-name">Last Name</label> -->
+            <input
+              type="text"
+              name="last-name"
+              id="last-name"
+              placeholder="last name..."
+            />
+            <span id="last-name-error" class="input-error err-hide">
+              Last name is required</span
+            >
+          </div>
+          <div class="form-group-email">
+            <!-- <label for="email">Email</label> -->
+            <input type="text" name="email" id="email" placeholder="email..." />
+            <span id="email-error" class="input-error err-hide">
+              Valid email is required</span
+            >
+          </div>
+          <div class="form-group">
+            <!-- <label for="password">Password</label> -->
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="password..."
+            />
+            <span id="password-error" class="input-error err-hide">
+              password is required</span
+            >
+          </div>
+          <div class="submit-div">
+            <button class="btn" type="submit" id="submit-btn">Submit</button>
+          </div>
+          <p class="dir-link">
+            Already have an account?
+            <a href="/front end/pages/login.html">Sign In</a>
+          </p>
+        </form>
+      </section>
+      <div class="toast-container hidden" id="register-toast"></div>
+    </main>
+
+    <script type="module" src="/front end/scripts/register.js"></script>
+  </body>
+</html>
