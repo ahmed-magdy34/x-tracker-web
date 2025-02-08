@@ -167,12 +167,13 @@ addForm.addEventListener("submit", async (e) => {
     newModalEmptyError.classList.remove("hidden");
     return;
   }
-  if (Number(newAmount.value) <= 0) {
-    newAmountError.classList.toggle("hidden", Number(newAmount.value) > 0);
-    newAmountZeroError.classList.toggle(
-      "hidden",
-      Number(newAmount.value) !== 0
-    );
+  if (Number(newAmount.value) === 0) {
+    newAmountZeroError.classList.remove("hidden");
+
+    return;
+  }
+  if (Number(newAmount.value) < 0) {
+    newAmountError.classList.remove("hidden");
     return;
   }
   const newExpense = {
