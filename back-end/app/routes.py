@@ -15,36 +15,31 @@ def test():
 @api_bp.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
+
     if not all(k in data for k in ('first_name', 'last_name', 'email', 'password')):
         return jsonify({'error': 'Missing data'}), 400
 
     if User.query.filter_by(email=data['email']).first():
         return jsonify({'error': 'Email already exists'}), 409
 
-    hashed_password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
-    user = User(
-        first_name=data['first_name'],
-        last_name=data['last_name'],
-        email=data['email'],
-        password=hashed_password
-    )
-    db.session.add(user)
-    db.session.commit()
+    new_user = User.create_user(data['first_name'], data['last_name'], data['email'], data['password'])
 
-    return jsonify({'message': 'User registered successfully'}), 201
+    return jsonify({'message': 'User registered successfully', 'user_id': new_user.id}), 201
+
 
 
 # User Login
 @api_bp.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    user = User.query.filter_by(email=data.get('email')).first()
+    user = User.find_by_email(data.get('email'))
 
     if user and bcrypt.check_password_hash(user.password, data.get('password')):
-        access_token = create_access_token(identity=str(user.id))  # Convert user.id to string
+        access_token = create_access_token(identity=str(user.id))
         return jsonify({'access_token': access_token}), 200
 
     return jsonify({'error': 'Invalid credentials'}), 401
+
 
 
 # Add Expense
@@ -55,13 +50,14 @@ def add_expense():
     data = request.get_json()
 
     if not all(k in data for k in ('amount', 'date', 'description')):
-        return jsonify({'error': 'Amount, Date and Description  are required'}), 400
+        return jsonify({'error': 'Amount, Date and Description are required'}), 400
 
-    expense = Expense(amount=data['amount'], date=data['date'], description=data['description'], user_id=user_id)
-    db.session.add(expense)
-    db.session.commit()
+    new_expense = Expense.add_expense(user_id, data['amount'], data['date'], data['description'])
 
-    return jsonify({'message': 'Expense added successfully'}), 201
+    return jsonify({'message': 'Expense added successfully', 'expense_id': new_expense.id}), 201
+
+
+
 
 # Get Expenses
 @api_bp.route('/expenses', methods=['GET'])
@@ -79,6 +75,8 @@ def get_expenses():
         }
         for e in expenses
     ]), 200
+
+
 @api_bp.route('/expenses/<int:expense_id>', methods=['PUT'])
 @jwt_required()
 def update_expense(expense_id):
@@ -93,6 +91,8 @@ def update_expense(expense_id):
         expense.amount = data['amount']
     if 'date' in data:
         expense.date = data['date']
+    if 'description' in data:
+        expense.description=data['description']    
 
     db.session.commit()
 

@@ -1,6 +1,7 @@
 import {
   addExpense,
   deleteExpenseApi,
+  editExpenseApi,
   getExpenses,
 } from "../services/apiFunctions.js";
 import { formatDate } from "../utils/dateFormat.js";
@@ -36,6 +37,10 @@ const newDate = document.getElementById("new-date");
 const newModalEmptyError = document.getElementById("new-empty-err");
 const newAmountError = document.getElementById("new-amount-err");
 const newAmountZeroError = document.getElementById("new-amount-err-zero");
+
+const confirmDeleteButton = document.getElementById("confirm-btn");
+const cancelDeleteButton = document.getElementById("cancel-btn");
+const confirmDiv = document.getElementById("confirm-popup");
 
 ///////////////////////// State /////////////////////////
 let userExpenses = [];
@@ -115,7 +120,7 @@ signOutButton.addEventListener("click", () => {
   window.location.href = "login.html";
 });
 
-editForm.addEventListener("submit", (e) => {
+editForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (
     !descriptionEditInput.value ||
@@ -139,8 +144,16 @@ editForm.addEventListener("submit", (e) => {
     amount: Number(amountEditInput.value),
     date: formatDate(dateEditInput.value),
   };
+  const response = await editExpenseApi(editedExpense.id, editedExpense, token);
+  if (response?.message) {
+    toastHandler(response.message, "✅");
+    updateTable();
+    updateSummary();
+  } else {
+    toastHandler(response.error, "❌");
+  }
+
   clearEditModal();
-  console.log(editedExpense);
 });
 
 closeButton.addEventListener("click", (e) => {
