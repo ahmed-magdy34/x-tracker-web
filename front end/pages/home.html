@@ -12,6 +12,7 @@
     />
   </head>
   <body>
+    +-+
     <nav class="nav">
       <div class="logo">
         <img
@@ -115,11 +116,13 @@
           </form>
         </div>
       </section>
-      <div class="hidden confirm-modal" id="confirm-popup">
-        <p>Are you sure you want to delete this expense?</p>
-        <div class="confirm-btns hidden">
-          <button id="confirm-btn">Confirm</button>
-          <button id="cancel-btn">Cancel</button>
+      <div class="hidden confirm-modal-overlay" id="confirm-modal-overlay">
+        <div class="hidden confirm-modal" id="confirm-popup">
+          <p>Are you sure you want to delete this expense?</p>
+          <div class="confirm-btns">
+            <button id="confirm-btn">Confirm</button>
+            <button id="cancel-btn">Cancel</button>
+          </div>
         </div>
       </div>
     </div>

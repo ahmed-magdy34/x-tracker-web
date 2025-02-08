@@ -41,10 +41,12 @@ const newAmountZeroError = document.getElementById("new-amount-err-zero");
 const confirmDeleteButton = document.getElementById("confirm-btn");
 const cancelDeleteButton = document.getElementById("cancel-btn");
 const confirmDiv = document.getElementById("confirm-popup");
+const confirmDivOverlay = document.getElementById("confirm-modal-overlay");
 
 ///////////////////////// State /////////////////////////
 let userExpenses = [];
 let expenseToEdit = {};
+let expenseToDeleteId;
 
 ///////////////////////// Helper Functions /////////////////////////
 const clearAddModal = () => {
@@ -80,19 +82,29 @@ const getUserExpenses = async () => {
     userExpenses = response;
     updateTable();
     updateSummary();
+    console.log(userExpenses);
   }
 };
 
 ///////////////////////// Expense Operations /////////////////////////
 const deleteExpense = async (id) => {
-  const res = await deleteExpenseApi(id, token);
+  expenseToDeleteId = id;
+  console.log(expenseToDeleteId);
+  confirmDiv.classList.remove("hidden");
+  confirmDivOverlay.classList.remove("hidden");
+};
+confirmDeleteButton.addEventListener("click", async () => {
+  const res = await deleteExpenseApi(expenseToDeleteId, token);
   if (res.error) {
     toastHandler(res.error, "❌");
     return;
   }
   getUserExpenses();
-};
-
+});
+cancelDeleteButton.addEventListener("click", () => {
+  confirmDiv.classList.add("hidden");
+  confirmDivOverlay.classList.add("hidden");
+});
 const editExpense = (id) => {
   expenseToEdit = userExpenses.find((el) => el.id === Number(id));
   amountEditInput.value = expenseToEdit.amount;
