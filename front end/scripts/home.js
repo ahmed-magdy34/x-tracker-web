@@ -123,8 +123,6 @@ const editExpense = (id) => {
 ///////////////////////// Event Listeners /////////////////////////
 if (!token) {
   window.location.href = "login.html";
-} else {
-  console.log(token);
 }
 
 signOutButton.addEventListener("click", () => {
@@ -194,12 +192,12 @@ addForm.addEventListener("submit", async (e) => {
     date: formatDate(newDate.value),
   };
   const response = await addExpense(newExpense, token);
+  getUserExpenses();
+  setTimeout(clearAddModal, 3000);
   toastHandler(
     response?.message || "Something went wrong",
     response?.message ? "✅" : "❌"
   );
-  setTimeout(clearAddModal, 3000);
-  getUserExpenses();
 });
 
 closeAddModal.addEventListener("click", clearAddModal);
