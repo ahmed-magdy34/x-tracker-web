@@ -113,3 +113,21 @@ def delete_expense(expense_id):
     db.session.commit()
 
     return jsonify({'message': 'Expense deleted successfully'}), 200
+
+
+# Reset Password
+@api_bp.route('/reset-password', methods=['PUT'])
+def update_password():
+    data = request.get_json()
+    if not all(k in data for k in ('email', 'new_password')):
+        return jsonify({'error': 'Email and new password are required'}), 400
+
+    user = User.query.filter_by(email=data['email']).first()
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+
+    hashed_password = bcrypt.generate_password_hash(data['new_password']).decode('utf-8')
+    user.password = hashed_password
+    db.session.commit()
+
+    return jsonify({'message': 'Password updated successfully'}), 200
