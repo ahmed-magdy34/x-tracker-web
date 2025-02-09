@@ -175,3 +175,26 @@ export const resetPassword = async (userData) => {
     return { error: err.message };
   }
 };
+export const getUserInfo = async (token) => {
+  try {
+    const response = await fetch("http://127.0.0.1:5000/api/user", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const result = response.headers
+      .get("content-type")
+      ?.includes("application/json")
+      ? await response.json()
+      : null;
+    if (!response.ok) {
+      throw new Error(result?.error || `HTTP error: ${response.status}`);
+    }
+    return result;
+  } catch (err) {
+    console.error("get Error:", err.message);
+    return { error: err.message };
+  }
+};

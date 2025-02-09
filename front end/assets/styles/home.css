@@ -471,3 +471,26 @@ h1 {
   align-items: center;
   gap: 39px;
 }
+.user-icon {
+  color: white;
+  width: 32px;
+  font-size: larger;
+  cursor: pointer;
+  transition: all;
+  transition-duration: 500ms;
+}
+.user-icon:hover {
+  color: orangered;
+}
+.user-data {
+  width: 300px;
+  height: 150px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 70px;
+  right: 5px;
+  text-align: center;
+  padding: 8px;
+  border-radius: 10px;
+  z-index: 1000;
+}

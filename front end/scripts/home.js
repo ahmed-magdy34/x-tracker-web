@@ -4,6 +4,7 @@ import {
   deleteExpenseApi,
   editExpenseApi,
   getExpenses,
+  getUserInfo,
 } from "../services/apiFunctions.js";
 import { formatDate } from "../utils/dateFormat.js";
 
@@ -43,10 +44,13 @@ const confirmDeleteButton = document.getElementById("confirm-btn");
 const cancelDeleteButton = document.getElementById("cancel-btn");
 const confirmDiv = document.getElementById("confirm-popup");
 const confirmDivOverlay = document.getElementById("confirm-modal-overlay");
+const userData = document.getElementById("user-data");
+const userIcon = document.getElementById("user-icon");
 
 ///////////////////////// State /////////////////////////
 let userExpenses = [];
 let expenseToEdit = {};
+let userInfo = {};
 let expenseToDeleteId;
 
 ///////////////////////// Helper Functions /////////////////////////
@@ -75,6 +79,25 @@ const toastHandler = (message, emoji) => {
 };
 
 ///////////////////////// Fetch Expenses /////////////////////////
+document.addEventListener("DOMContentLoaded", async () => {
+  const res = await getUserInfo(token);
+  if (res?.error) {
+    toastHandler(res.error, "❌");
+  } else {
+    userInfo = res;
+    console.log(userInfo);
+  }
+});
+userIcon.addEventListener("mouseenter", () => {
+  userData.classList.remove("hidden");
+  userData.innerHTML = `<p> Name: ${userInfo?.first_name}${userInfo?.last_name}</p>
+  <p>Email: ${userInfo.email}</p>
+  <p>Joined: ${userInfo.created_at}</p>`;
+});
+userIcon.addEventListener("mouseleave", () => {
+  userData.classList.add("hidden");
+});
+
 const getUserExpenses = async () => {
   const response = await getExpenses(token);
   if (response.error) {
