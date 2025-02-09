@@ -45,7 +45,6 @@ form.addEventListener("submit", (e) => {
     loginValues.password = password.value.trim("");
     email.value = "";
     password.value = "";
-    console.log(loginValues);
     login(loginValues).then((res) => {
       if (res.access_token) {
         localStorage.setItem("authToken", res.access_token);

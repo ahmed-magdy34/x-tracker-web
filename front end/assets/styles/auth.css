@@ -12,16 +12,12 @@
   justify-content: space-between;
   height: 700px;
   background-color: var(--text-color);
-  /* background-image: url("/assets/images/Leonardo_Phoenix_10_Twopart_PNG_for_a_web_app_focusing_on_expe_2.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; */
 }
 
 .img {
   height: 700px;
   width: 100%;
-  object-fit: cover; /* Ensures the image maintains aspect ratio */
+  object-fit: cover;
 }
 
 .form {
@@ -271,4 +267,17 @@ label {
 }
 .hidden {
   display: none;
+}
+.forgot-pass a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 800;
+}
+.forgot-pass a:active {
+  color: var(--text-color);
+  text-decoration: none;
+}
+.forgot-pass a:visited {
+  color: var(--text-color);
+  text-decoration: none;
 }

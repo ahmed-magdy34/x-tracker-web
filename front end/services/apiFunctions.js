@@ -152,3 +152,26 @@ export const editExpenseApi = async (id, editedExpense, token) => {
     return { error: err.message };
   }
 };
+export const resetPassword = async (userData) => {
+  try {
+    const response = await fetch(`http://127.0.0.1:5000/api/reset-password`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+    const result = response.headers
+      .get("content-type")
+      ?.includes("application/json")
+      ? await response.json()
+      : null;
+    if (!response.ok) {
+      throw new Error(result?.error || `HTTP error: ${response.status}`);
+    }
+    return result;
+  } catch (err) {
+    console.error("edit Error:", err.message);
+    return { error: err.message };
+  }
+};

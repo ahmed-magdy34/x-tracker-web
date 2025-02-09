@@ -131,3 +131,22 @@ def update_password():
     db.session.commit()
 
     return jsonify({'message': 'Password updated successfully'}), 200
+
+
+@api_bp.route('/user', methods=['GET'])
+@jwt_required()
+def get_user_details():
+    """Fetch user details using the token."""
+    user_id = int(get_jwt_identity())  # Extract user ID from JWT
+    user = User.find_by_id(user_id)
+
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+
+    return jsonify({
+        'id': user.id,
+        'first_name': user.first_name,
+        'last_name': user.last_name,
+        'email': user.email,
+        'created_at': user.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+    }), 200

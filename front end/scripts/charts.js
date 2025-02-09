@@ -1,4 +1,4 @@
-"useStrict";
+"use strict";
 
 import { getExpenses } from "../services/apiFunctions.js";
 

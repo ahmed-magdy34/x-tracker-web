@@ -1,3 +1,4 @@
+from datetime import datetime
 from . import db, bcrypt
 
 
@@ -8,6 +9,7 @@ class User(db.Model):
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
     expenses = db.relationship('Expense', backref='user', lazy=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)  # Timestamp when user is created
 
     @classmethod
     def create_user(cls, first_name, last_name, email, password):
@@ -22,6 +24,11 @@ class User(db.Model):
     def find_by_email(cls, email):
         """Find a user by email."""
         return cls.query.filter_by(email=email).first()
+    
+    @classmethod
+    def find_by_id(cls, user_id):
+        """Find a user by ID."""
+        return cls.query.get(user_id)
     
     
 
