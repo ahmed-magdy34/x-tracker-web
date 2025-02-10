@@ -58,13 +58,13 @@ Project Checklist:
 
 -It contains conditional statements.
 
-    File name: app/routes.py, app.js
-    Line number(s): 37, 52, 87 (app/routes.py), 20, 45 (app.js)
+    File name: app/routes.py, home.js
+    Line number(s): 37, 52, 87 (app/routes.py), 86, 105 (home.js)
 
 -It contains loops.
 
-    File name: app/routes.py, app.js
-    Line number(s): 19, 52, 122 (app/routes.py), 30, 55 (app.js)
+    File name: app/routes.py, home.js
+    Line number(s): 19, 52, 122 (app/routes.py), 244 (home.js)
 
 -It lets the user enter a value in a text box at some point (API receives input from users for registration, login, and expenses).
 
