@@ -5,12 +5,15 @@ import { getExpenses } from "../services/apiFunctions.js";
 if (!localStorage.getItem("authToken")) {
   window.location.href = "login.html";
 }
-
+const logoImage = document.getElementById("logo-img");
 const barChart = document.getElementById("bar-chart");
 const signOutBtn = document.getElementById("sign-out");
 signOutBtn.addEventListener("click", () => {
   localStorage.removeItem("authToken");
   window.location.href = "login.html";
+});
+logoImage.addEventListener("click", () => {
+  window.location.href = "home.html";
 });
 
 const token = localStorage.getItem("authToken");

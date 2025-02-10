@@ -87,13 +87,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     toastHandler(res.error, "❌");
   } else {
     userInfo = res;
-    console.log(userInfo);
   }
 });
 userIcon.addEventListener("mouseenter", () => {
   userData.classList.remove("hidden");
-  userData.innerHTML = `<p> Name: ${userInfo?.first_name}${userInfo?.last_name}</p>
-  <p>Email: ${userInfo.email}</p>
+  userData.innerHTML = `<p> ${userInfo?.first_name} ${userInfo?.last_name}</p>
+  <p> ${userInfo.email}</p>
   <p>Joined: ${userInfo.created_at}</p>`;
 });
 userIcon.addEventListener("mouseleave", () => {
@@ -108,14 +107,12 @@ const getUserExpenses = async () => {
     userExpenses = response;
     updateTable();
     updateSummary();
-    console.log(userExpenses);
   }
 };
 
 ///////////////////////// Expense Operations /////////////////////////
 const deleteExpense = async (id) => {
   expenseToDeleteId = id;
-  console.log(expenseToDeleteId);
   confirmDiv.classList.remove("hidden");
   confirmDivOverlay.classList.remove("hidden");
 };
@@ -166,14 +163,23 @@ editForm.addEventListener("submit", async (e) => {
     !dateEditInput.value
   ) {
     modalEmptyError.classList.remove("hidden");
+    editSubmitBtn.disabled = false;
+    editSubmitBtn.innerText = "Submit";
     return;
   }
-  if (Number(amountEditInput.value) <= 0) {
-    amountError.classList.toggle("hidden", Number(amountEditInput.value) > 0);
+  if (Number(amountEditInput.value) === 0) {
     amountZeroError.classList.toggle(
       "hidden",
       Number(amountEditInput.value) !== 0
     );
+    editSubmitBtn.disabled = false;
+    editSubmitBtn.innerText = "Submit";
+    return;
+  }
+  if (amountEditInput.value < 0) {
+    amountError.classList.remove("hidden");
+    editSubmitBtn.disabled = false;
+    editSubmitBtn.innerText = "Submit";
     return;
   }
   const editedExpense = {
@@ -207,15 +213,21 @@ addForm.addEventListener("submit", async (e) => {
   submitAddBtn.innerText = "Adding...";
   if (!newAmount.value || !newDescription.value || !newDate.value) {
     newModalEmptyError.classList.remove("hidden");
+    submitAddBtn.disabled = false;
+    submitAddBtn.innerText = "Submit";
     return;
   }
   if (Number(newAmount.value) === 0) {
     newAmountZeroError.classList.remove("hidden");
+    submitAddBtn.disabled = false;
+    submitAddBtn.innerText = "Submit";
 
     return;
   }
   if (Number(newAmount.value) < 0) {
     newAmountError.classList.remove("hidden");
+    submitAddBtn.disabled = false;
+    submitAddBtn.innerText = "Submit";
     return;
   }
   const newExpense = {

@@ -81,7 +81,7 @@ body {
 }
 
 .nav-btn:hover {
-  padding: 4px;
+  padding: 10px;
 }
 
 .container {
@@ -485,11 +485,14 @@ h1 {
 .user-data {
   width: 300px;
   height: 150px;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 800;
   position: absolute;
   top: 70px;
-  right: 5px;
+  right: 20px;
   text-align: center;
+
   padding: 8px;
   border-radius: 10px;
   z-index: 1000;
