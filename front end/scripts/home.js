@@ -39,6 +39,7 @@ const newDate = document.getElementById("new-date");
 const newModalEmptyError = document.getElementById("new-empty-err");
 const newAmountError = document.getElementById("new-amount-err");
 const newAmountZeroError = document.getElementById("new-amount-err-zero");
+const submitAddBtn = document.getElementById("submit-add-btn");
 
 const confirmDeleteButton = document.getElementById("confirm-btn");
 const cancelDeleteButton = document.getElementById("cancel-btn");
@@ -46,6 +47,7 @@ const confirmDiv = document.getElementById("confirm-popup");
 const confirmDivOverlay = document.getElementById("confirm-modal-overlay");
 const userData = document.getElementById("user-data");
 const userIcon = document.getElementById("user-icon");
+const editSubmitBtn = document.getElementById("submit-edit-btn");
 
 ///////////////////////// State /////////////////////////
 let userExpenses = [];
@@ -156,6 +158,8 @@ signOutButton.addEventListener("click", () => {
 
 editForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+  editSubmitBtn.disabled = true;
+  editSubmitBtn.innerText = "editing...";
   if (
     !descriptionEditInput.value ||
     !amountEditInput.value ||
@@ -188,6 +192,8 @@ editForm.addEventListener("submit", async (e) => {
   }
 
   clearEditModal();
+  editSubmitBtn.disabled = false;
+  editSubmitBtn.innerText = "Submit";
 });
 
 closeButton.addEventListener("click", (e) => {
@@ -197,6 +203,8 @@ closeButton.addEventListener("click", (e) => {
 
 addForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+  submitAddBtn.disabled = true;
+  submitAddBtn.innerText = "Adding...";
   if (!newAmount.value || !newDescription.value || !newDate.value) {
     newModalEmptyError.classList.remove("hidden");
     return;
@@ -222,6 +230,8 @@ addForm.addEventListener("submit", async (e) => {
     response?.message || "Something went wrong",
     response?.message ? "✅" : "❌"
   );
+  submitAddBtn.disabled = false;
+  submitAddBtn.innerText = "Submit";
 });
 
 closeAddModal.addEventListener("click", clearAddModal);
