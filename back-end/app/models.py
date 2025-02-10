@@ -10,7 +10,7 @@ class User(db.Model):
     password = db.Column(db.String(100), nullable=False)
     expenses = db.relationship('Expense', backref='user', lazy=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)  # Timestamp when user is created
-
+    # class method for creating new user
     @classmethod
     def create_user(cls, first_name, last_name, email, password):
         """Create and save a new user."""
@@ -19,12 +19,12 @@ class User(db.Model):
         db.session.add(new_user)
         db.session.commit()
         return new_user
-
+    # class method for find user by email
     @classmethod
     def find_by_email(cls, email):
         """Find a user by email."""
         return cls.query.filter_by(email=email).first()
-    
+    # class method for find user by id 
     @classmethod
     def find_by_id(cls, user_id):
         """Find a user by ID."""
@@ -38,7 +38,7 @@ class Expense(db.Model):
     date = db.Column(db.String(100), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     description = db.Column(db.String(200), nullable=False)
-
+    # class method for adding new expense 
     @classmethod
     def add_expense(cls, user_id, amount, date, description):
         """Create and save a new expense."""

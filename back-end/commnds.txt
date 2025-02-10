@@ -4,11 +4,11 @@ python -m venv venv
 #running virtual env 
 venv\Scripts\Activate.ps1
 
-#creating requirments file
-pip freeze > requirments.txt
-
 #installing dependecies
 pip install -r requirments.txt
+
+#creating requirments file
+pip freeze > requirments.txt
 
 # to inialize database run :
 flask shell 

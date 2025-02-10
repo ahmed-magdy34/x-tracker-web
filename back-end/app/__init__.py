@@ -14,7 +14,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///expenses.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['JWT_SECRET_KEY'] = 'your_jwt_secret_key'
-    app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=12)
+    app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=12) # Setting token expiry date to 12 hours 
 
     db.init_app(app)
     bcrypt.init_app(app)
