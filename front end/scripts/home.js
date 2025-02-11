@@ -201,12 +201,12 @@ editForm.addEventListener("submit", async (e) => {
   editSubmitBtn.disabled = false;
   editSubmitBtn.innerText = "Submit";
 });
-
+//close edit modal
 closeButton.addEventListener("click", (e) => {
   e.preventDefault();
   clearEditModal();
 });
-
+//add expense
 addForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   submitAddBtn.disabled = true;
@@ -245,7 +245,7 @@ addForm.addEventListener("submit", async (e) => {
   submitAddBtn.disabled = false;
   submitAddBtn.innerText = "Submit";
 });
-
+//close add modal//
 closeAddModal.addEventListener("click", clearAddModal);
 addButton.addEventListener("click", () =>
   addModalOverlay.classList.remove("hidden")

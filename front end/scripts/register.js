@@ -20,7 +20,7 @@ const lastNameError = document.getElementById("last-name-error");
 const registerValues = {};
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-/////////////////////////////////////////////////////
+////////////register/////////////////////////////////////////
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();

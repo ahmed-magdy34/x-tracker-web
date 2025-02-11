@@ -8,21 +8,23 @@ if (!localStorage.getItem("authToken")) {
 const logoImage = document.getElementById("logo-img");
 const barChart = document.getElementById("bar-chart");
 const signOutBtn = document.getElementById("sign-out");
+/////prevent the user to reach here without login//
 signOutBtn.addEventListener("click", () => {
   localStorage.removeItem("authToken");
   window.location.href = "login.html";
 });
+//////redirect the user to the home page//
 logoImage.addEventListener("click", () => {
   window.location.href = "home.html";
 });
-
+////getting the user expenses//
 const token = localStorage.getItem("authToken");
 let userExpenses = [];
 const requestExpenses = async () => {
   const res = await getExpenses(token);
   userExpenses = await res;
 };
-
+////////////////function to extract months and years and their total expenses to insert into the chart////
 const extractData = async () => {
   await requestExpenses();
   const groupedData = userExpenses?.reduce((acc, item) => {
@@ -51,7 +53,7 @@ const extractData = async () => {
           data: values,
           borderWidth: 1,
           backgroundColor: [
-            "rgba(255, 99, 132, 0.5)", // Red
+            "rgba(54, 162, 235, 1)", // Red
           ],
           //   borderColor: [
           //     "rgba(255, 99, 132, 1)",
