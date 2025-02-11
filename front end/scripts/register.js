@@ -20,6 +20,9 @@ const lastNameError = document.getElementById("last-name-error");
 const registerValues = {};
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
+if (localStorage.getItem("authToken")) {
+  window.location.href = "home.html";
+}
 ////////////register/////////////////////////////////////////
 
 form.addEventListener("submit", (e) => {

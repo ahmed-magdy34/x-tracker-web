@@ -16,6 +16,7 @@ const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 ///////////////////////////////////////////////////////
 if (localStorage.getItem("authToken")) {
+  window.location.href = "home.html";
 }
 form.addEventListener("submit", (e) => {
   e.preventDefault();
